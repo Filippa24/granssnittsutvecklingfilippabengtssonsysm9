@@ -1,0 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--primaryFont);
+}
+
+:root {
+  --primaryFont: "Zen Dots", sans-serif;
+  --secondayFont: "Inter", sans-serif;
+  --accentFont: "Bungee Hairline", sans-serif;
+
+  --fontSize-XS: 1rem;
+  --fontSize-S: 1.25rem;
+  --fontSize-M: 1.75rem;
+
+  --black: #111010;
+  --white: #e6e6e6;
+  --red: #a3111b;
+}
+
+html {
+  font-size: 16px;
+}
+
+/* hero---------------------------------------------------------------------------------------------------------------------- */
+
+.hero {
+  background-image: url(../public/Media/media.backgrounds/background.1.jpg);
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 20vh;
+}
+
+.hero__title {
+  color: var(--white);
+  font-size: 3.5rem;
+  text-align: center;
+  line-height: 1;
+  margin-bottom: 2rem;
+}
+
+.hero__slogan {
+  color: var(--red);
+  font-family: var(--accentFont);
+  text-align: center;
+  text-shadow: 5px 5px 5px #111010;
+}
+
+.hero__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+    .hero__title {
+        font-size: 7rem;
+    }
+}
+
+/* --------------------------------------------------------------------------------------------------------------------- */
