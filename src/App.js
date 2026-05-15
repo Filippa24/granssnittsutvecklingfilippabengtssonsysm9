@@ -1,12 +1,16 @@
-// import logo from './logo.svg';
-import './style.css';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import "./style.css";
 
 function App() {
-  return (
-    <div>
-      
-    </div>
-  );
+  return <div>
+    <Router>
+      <Routes>
+        <Route>
+          
+        </Route>
+      </Routes>
+    </Router>
+  </div>;
 }
 
 export default App;
