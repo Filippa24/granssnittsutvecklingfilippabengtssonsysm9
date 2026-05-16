@@ -15,16 +15,19 @@
   --fontSize-S: 1.25rem;
   --fontSize-M: 1.75rem;
 
+  --shadow: 1px 1px 3px #111010;
+
   --black: #111010;
   --white: #e6e6e6;
   --red: #a3111b;
+  --grey: #A1A1A1;
 }
 
 html {
   font-size: 16px;
 }
 
-/* hero---------------------------------------------------------------------------------------------------------------------- */
+/* HERO---------------------------------------------------------------------------------------------------------------------- */
 
 .hero {
   background-image: url(../public/Media/media.backgrounds/background.1.jpg);
@@ -37,12 +40,13 @@ html {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding-bottom: 17vh;
+  padding-bottom: 10vh;
 }
 
 .hero__title {
   color: var(--white);
-  font-size: 3.5rem;
+  /* måste ha ett fast width värde (vw) i mitten av parentesen nedan för att texten ska kunna skalas mellan storlekar */
+  font-size: clamp(3.5rem, 8vw, 20rem);
   text-align: center;
   line-height: 0.9;
   margin-bottom: 1rem;
@@ -52,7 +56,7 @@ html {
   color: var(--red);
   font-family: var(--accentFont);
   text-align: center;
-  text-shadow: 5px 5px 5px #111010;
+  text-shadow: var(--shadow);
   margin-top: 2rem;
 }
 
@@ -61,36 +65,80 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 80%;
 }
 
 .hero__mobile-text {
   color: var(--red);
   font-size: var(--fontSize-XS);
+  text-shadow: var(--shadow);
 }
 
 @media (min-width: 768px) {
-  
   .hero__title {
     font-size: 5rem;
   }
   .hero__slogan {
-    margin-top: 2rem;
+    margin-top: 4rem;
+  }
+  .hero__mobile-text {
+    display: none;
   }
 }
 @media (min-width: 1050px) {
   .hero__title {
-    font-size: 7rem;
-  }
-  .hero__mobile-text {
-    visibility: hidden;
-  }
-  .hero {
-    padding-bottom: 20vh;
-  }
-  .hero__slogan {
-    margin-top: 0rem;
-    font-size: var(--fontSize-M);
+    font-size: clamp(3.5rem, 8vw, 20rem);
   }
 }
 
-/* --------------------------------------------------------------------------------------------------------------------- */
+/* NAVBAR---------------------------------------------------------------------------------------------------------------- */
+
+.navbar {
+  background: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  align-items: center;
+}
+
+.navbar__mobile--container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 5vh;
+}
+
+.navbar__mobile--text, .navbar__text {
+  padding: 1rem;
+  color: var(--red);
+  font-size: var(--fontSize-XS);
+  text-shadow: var(--shadow);
+}
+
+.navbar__mobile--text:hover, .navbar__text:hover {
+  color: var(--grey);
+  cursor: pointer;
+}
+
+.navbar__container {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .navbar__mobile--container {
+    display: none;
+  }
+  .navbar__container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 3vh;
+  }
+  .navbar {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 100vh
+  }
+}
