@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: var(--primaryFont);
+  color: var(--white);
 }
 
 :root {
@@ -36,15 +37,15 @@ html {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding-bottom: 20vh;
+  padding-bottom: 17vh;
 }
 
 .hero__title {
   color: var(--white);
   font-size: 3.5rem;
   text-align: center;
-  line-height: 1;
-  margin-bottom: 2rem;
+  line-height: 0.9;
+  margin-bottom: 1rem;
 }
 
 .hero__slogan {
@@ -52,19 +53,44 @@ html {
   font-family: var(--accentFont);
   text-align: center;
   text-shadow: 5px 5px 5px #111010;
+  margin-top: 2rem;
 }
 
-.hero__text {
+.hero__text-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.hero__mobile-text {
+  color: var(--red);
+  font-size: var(--fontSize-XS);
+}
+
 @media (min-width: 768px) {
-    .hero__title {
-        font-size: 7rem;
-    }
+  
+  .hero__title {
+    font-size: 5rem;
+  }
+  .hero__slogan {
+    margin-top: 2rem;
+  }
+}
+@media (min-width: 1050px) {
+  .hero__title {
+    font-size: 7rem;
+  }
+  .hero__mobile-text {
+    visibility: hidden;
+  }
+  .hero {
+    padding-bottom: 20vh;
+  }
+  .hero__slogan {
+    margin-top: 0rem;
+    font-size: var(--fontSize-M);
+  }
 }
 
 /* --------------------------------------------------------------------------------------------------------------------- */
