@@ -20,7 +20,11 @@
   --black: #111010;
   --white: #e6e6e6;
   --red: #a3111b;
-  --grey: #A1A1A1;
+  --grey: #a1a1a1;
+}
+
+#root {
+  width: 100%;
 }
 
 html {
@@ -30,6 +34,7 @@ html {
 /* HERO---------------------------------------------------------------------------------------------------------------------- */
 
 .hero {
+  background: var(--black);
   background-image: url(../public/Media/media.backgrounds/background.1.jpg);
   width: 100%;
   height: 100vh;
@@ -74,6 +79,13 @@ html {
   text-shadow: var(--shadow);
 }
 
+/* för att slippa se den vita blinkningen när man går från home till andra komponenter: */
+.loading__background {
+  background: var(--black);
+  width: 100%;
+  min-height: 100vh;
+}
+
 @media (min-width: 768px) {
   .hero__title {
     font-size: 5rem;
@@ -99,8 +111,13 @@ html {
   top: 0;
   left: 0;
   width: 100%;
+  height: 120px;
   z-index: 100;
   align-items: center;
+}
+
+.navbar--dark {
+  background: var(--black);
 }
 
 .navbar__mobile--container {
@@ -110,20 +127,27 @@ html {
   margin-top: 5vh;
 }
 
-.navbar__mobile--text, .navbar__text {
+.navbar__mobile--text,
+.navbar__text {
   padding: 1rem;
   color: var(--red);
   font-size: var(--fontSize-XS);
   text-shadow: var(--shadow);
 }
 
-.navbar__mobile--text:hover, .navbar__text:hover {
+.navbar__mobile--text:hover,
+.navbar__text:hover {
   color: var(--grey);
   cursor: pointer;
 }
 
 .navbar__container {
   display: none;
+}
+
+/* link fast i css heter det ändå a: */
+a {
+  text-decoration: none;
 }
 
 @media (min-width: 768px) {
@@ -139,6 +163,89 @@ html {
     display: flex;
     align-items: center;
     width: 200px;
-    height: 100vh
+    height: 100vh;
+  }
+  .navbar--dark {
+    background: transparent;
+  }
+}
+
+/* PRODUCTCARD---------------------------------------------------------------------------------------------------- */
+
+.products__background {
+  background: var(--black);
+  width: 100%;
+}
+
+.product__list {
+  background: var(--black);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.product__container {
+  width: 80%;
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem; /*lite luft mellan title, image och price */
+}
+
+.product__title {
+  font-size: var(--fontSize-S);
+  height: 5rem;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.product__price {
+  font-family: var(--secondayFont);
+  font-size: var(--fontSize-XS);
+}
+
+.product__image {
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  border: 1px solid var(--grey);
+  border-radius: 6px;
+}
+
+.product__container:hover .product__title,
+.product__container:hover .product__price {
+  cursor: pointer;
+  color: var(--red);
+}
+
+.product__image:hover {
+  cursor: pointer;
+  border: 1px solid var(--red);
+}
+
+@media (min-width: 500px) {
+  .product__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    max-width: 90%;
+    margin: 0 auto;
+    column-gap: 0rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .product__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    max-width: 60%;
   }
 }
