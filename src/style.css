@@ -28,6 +28,7 @@
   --fontSize-XS: 1rem;
   --fontSize-S: 1.25rem;
   --fontSize-M: 1.75rem;
+  --fontSize-L: 2rem;
 
   --shadow: 1px 1px 3px #111010;
 
@@ -48,6 +49,34 @@ html {
 /*för att undvika vit bakgrund som syns bakom komponenter ibland*/
 body {
   background: var(--black);
+}
+
+/*ICONS------------------------------------------------------------------------------------------------------------------------*/
+
+.icon__close {
+  font-size: 24px;
+}
+
+.btn__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;   
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 200;
+  cursor: pointer;
+}
+
+/*för att få färg på ikonen:*/
+.icon__close path:last-child {
+  fill: var(--red) !important;
+}
+
+.btn__close:hover .icon__close path:last-child {
+  fill: var(--grey) !important;
 }
 
 /* HERO---------------------------------------------------------------------------------------------------------------------- */
@@ -247,15 +276,14 @@ a {
   border-radius: 6px;
 }
 
-.product__container:hover .product__title,
-.product__container:hover .product__price {
-  cursor: pointer;
-  color: var(--red);
-}
-
-.product__image:hover {
+ .product__image:hover {
   cursor: pointer;
   border: 1px solid var(--red);
+} 
+
+.product__title--hovered,
+.product__price--hovered {
+  color: var(--red);
 }
 
 @media (min-width: 500px) {
@@ -345,7 +373,6 @@ ul {
     top: 50%;
     right: 1rem;
     bottom: auto;
-    /* left: auto; */
     align-items: center;
     margin-right: 2vw;
     flex-direction: column;
@@ -356,5 +383,153 @@ ul {
   }
   .filter__li {
     font-size: var(--fontSize-XS);
+  }
+}
+
+/* PRODUCTDETAILS------------------------------------------------------------------------------------ */
+
+.details__background {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.details__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  max-width: 500px;
+  gap: 0.5rem;
+}
+
+.details__image {
+  width: 90%;
+  object-fit: cover;
+  border: 1px solid var(--grey);
+  border-radius: 6px;
+}
+
+.details__row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.2rem;
+  gap: 0.5rem;
+}
+
+.details__row p {
+  font-family: var(--secondayFont);
+  font-size: var(--fontSize-XXS);
+}
+
+/* egen rad för price och btn */
+.details__price {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  line-height: 1.6rem;
+}
+
+.btn__small {
+  background: var(--red);
+  width: 9rem;
+  font-size: 11px;
+  border-radius: 6px;
+}
+
+.btn__small:hover {
+  background: var(--grey);
+  color: var(--black);
+}
+
+.details__model--mobile {
+  text-align: center;
+}
+
+/* dölj desktop versionen av product.model */
+.details__model--desktop {
+  display: none;
+}
+
+@media (min-width: 500px) {
+  .details__image {
+    max-width: 80%;
+  }
+}
+
+@media (min-width: 768px) {
+  .details__container {
+    flex-direction: row;
+    align-items: stretch; /*för att få product.model och product.price i linje med bildens topp och botten*/
+    min-width: 700px;
+    max-width: 75%;
+    gap: 5vw;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+  }
+
+  .details__text--content {
+    flex: 1; /*detta betyder att elementet tar upp all tillgänglig plats som inte används av andra element i samma flex container - i detta fall flex 1 på details__text-container säger till details__container "ge mig all plats som bilden inte använder". details__text--content är ett av två barn till details__container och de måste dela plats*/
+    display: flex;
+    flex-direction: column;
+  }
+
+  .details__image {
+    max-width: 50%;
+    height: auto;
+    object-fit: scale-down; /*vill att bilden ska skalas, inte ändra bredd eller höjd fritt*/
+    width: auto;
+    height: auto;
+  }
+
+  .details__container--text {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+  }
+
+  .details__row {
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .details__price {
+    margin-top: 0rem;
+    justify-content: space-between;
+  }
+
+  /*dölj mobile verisonen av product.model*/
+  .details__model--mobile {
+    display: none;
+  }
+
+  .details__model--desktop {
+    display: block;
+    text-align: left;
+    font-size: var(--fontSize-L);
+  }
+}
+
+@media (min-width: 1000px) {
+  .details__row p {
+    font-size: var(--fontSize-XS);
+  }
+
+  .details__container--text {
+    gap: 0.4rem;
+  }
+}
+
+@media (min-width: 1300px) {
+  .details__image {
+    max-width: 525px;
   }
 }

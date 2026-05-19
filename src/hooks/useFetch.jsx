@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 //ta emot url som parameter. urlen är för det specifika du vill hämta
 function UseFetch(url) {
   //stateful variabler:
-  const [data, setData] = useState(null); //data ska vaar null som standard
+  const [data, setData] = useState(null); //data ska vara null som standard
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
