@@ -1,4 +1,4 @@
-import ProductDetailsCard from "./cards/ProductDetailsCard";
+import ProductDetailsCard from "../../components/ProductDetailsCard/ProductDetailsCard";
 
 function ProductDetails({ addToCart }) {
   return (

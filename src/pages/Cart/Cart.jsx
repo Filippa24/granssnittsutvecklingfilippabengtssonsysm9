@@ -1,6 +1,7 @@
-import CartProductCard from "./cards/CartProductCard";
+import CartProductCard from "../../components/CartProductCard/CartProductCard";
 import { MdClose } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import "./Cart.css";
 
 //ta emot listan med cartItems från app.js / när man trycker på cart länken
 function Cart({

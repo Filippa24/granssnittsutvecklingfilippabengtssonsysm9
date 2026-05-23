@@ -1,0 +1,39 @@
+.product__container {
+  width: 80%;
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem; /*lite luft mellan title, image och price */
+}
+
+.product__title {
+  font-size: var(--fontSize-S);
+  height: 5rem;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.product__price {
+  font-family: var(--secondayFont);
+  font-size: var(--fontSize-XS);
+}
+
+.product__image {
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  border: 1px solid var(--grey);
+  border-radius: 6px;
+}
+
+.product__image:hover {
+  cursor: pointer;
+  border: 1px solid var(--red);
+}
+
+.product__title--hovered,
+.product__price--hovered {
+  color: var(--red);
+}

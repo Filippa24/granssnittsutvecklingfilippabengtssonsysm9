@@ -1,5 +1,6 @@
 import UseFetch from "../../hooks/useFetch";
 import { useState } from "react";
+import "./FilterCard.css";
 
 function FilterCard({ onSelectMake, selectedMake }) {
   const [showFilter, setShowFilter] = useState(false);

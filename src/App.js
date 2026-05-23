@@ -1,12 +1,12 @@
 //app.js = innehållet i vår app
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./style.css";
-import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
-import Products from "./components/Products";
-import ProductDetails from "./components/ProductDetails";
-import Cart from "./components/Cart";
+import "./index.css";
+import Home from "./pages/Home/Home";
+import Navbar from "./components/Navbar/Navbar";
+import Products from "./pages/Products/Products";
+import Cart from "./pages/Cart/Cart";
+import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import { useState, useEffect } from "react";
 
 //vill hantera cart i app.js eftersom tillståndet på cart ska vara tillgängligt överallt i appen
@@ -82,7 +82,7 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Hero />} />
+        <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route
           path="/products/:productId"

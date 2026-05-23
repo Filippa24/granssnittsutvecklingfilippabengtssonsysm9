@@ -1,14 +1,15 @@
 import { useParams, Link, Navigate } from "react-router-dom";
 import UseFetch from "../../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
+import "./ProductDetailsCard.css";
 
 //ikoner från react icons:
 import { MdClose } from "react-icons/md";
 
-//TO-DO: VISA 3 BILDER IST FÖR BARA EN I DETAILS 
+//TO-DO: VISA 3 BILDER IST FÖR BARA EN I DETAILS
 
 //ta emot addtocart funktionen
-function ProductDetailsCard({addToCart}) {
+function ProductDetailsCard({ addToCart }) {
   //variabel för att spara hämtad productid från urlen
   const { productId } = useParams();
   //variabel för att använda navigation
@@ -82,8 +83,11 @@ function ProductDetailsCard({addToCart}) {
             <p>
               <span className="details__title">PRICE: </span>
               {product.price.toLocaleString("sv-SE")} SEK
-            </p>                         {/*call-back, skicka produkten till addtocart-funktionen (i app.js)*/}
-            <button className="btn__small" onClick={(() => addToCart(product))}>ADD TO CART</button>
+            </p>{" "}
+            {/*call-back, skicka produkten till addtocart-funktionen (i app.js)*/}
+            <button className="btn__small" onClick={() => addToCart(product)}>
+              ADD TO CART
+            </button>
           </div>
         </div>
       </div>

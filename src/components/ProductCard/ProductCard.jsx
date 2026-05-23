@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import "./ProductCard.css";
 
 //ta emot product-objektet från products.jsx
 function ProductCard({product}) {

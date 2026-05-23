@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--primaryFont);
+  color: var(--white);
+
+  /* ta bort standard-css för knappar */
+  button {
+    appearance: none;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+}
+
+:root {
+  --primaryFont: "Zen Dots", sans-serif;
+  --secondayFont: "Inter", sans-serif;
+  --accentFont: "Bungee Hairline", sans-serif;
+
+  --fontSize-XXS: 0.8rem;
+  --fontSize-XS: 1rem;
+  --fontSize-S: 1.25rem;
+  --fontSize-M: 1.75rem;
+  --fontSize-L: 2rem;
+
+  --shadow: 1px 1px 3px #111010;
+
+  --black: #111010;
+  --white: #e6e6e6;
+  --red: #a3111b;
+  --grey: #a1a1a1;
+}
+
+#root {
+  width: 100%;
+}
+
+html {
+  font-size: 16px;
+}
+
+/*för att undvika vit bakgrund som syns bakom komponenter ibland*/
+body {
+  background: var(--black);
+}
+
+/*ICONS + BUTTONS------------------------------------------------------------------------------------------------------------------------*/
+
+.btn__small {
+  background: var(--red);
+  width: 9rem;
+  height: 1.6rem;
+  font-size: 11px;
+  border-radius: 6px;
+}
+
+.btn__small:hover {
+  background: var(--grey);
+  color: var(--black);
+}
+
+.icon__close {
+  font-size: 24px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px; /*användarvänlighet*/
+  height: 44px; /*användarvänlighet*/
+  cursor: pointer;
+}
+
+.btn__close {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 200;
+}
+
+.trashCan {
+  margin-left: 2rem;
+}
+
+/*för att få färg på icon__close:*/
+.icon__close path:last-child {
+  fill: var(--red);
+}
+
+/*vill att färgen på icon__close ska ändras redan när man hover på knappen, inte bara genom att hover på ikonen (användarvänlighet)*/
+.btn:hover .icon__close path:last-child {
+  fill: var(--grey) !important;
+}
+
+.btn:hover .icon {
+  fill: var(--red);
+}
+
+/*ANIMATIONER-------------------------------------------------------------------------------------------------------------------*/
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

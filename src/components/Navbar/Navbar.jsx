@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+import "./Navbar.css";
 
 function Navbar() {
   //uselocation för att kontrollera att vi är på url /products, eftersom då ska vi använda navbaren med mörk bakgrund ist för transparent

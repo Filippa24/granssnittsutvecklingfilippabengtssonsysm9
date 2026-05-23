@@ -1,0 +1,67 @@
+
+.cart__container {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; 
+  animation: fadein 0.2s ease-in;
+}
+
+.cart__title {
+  position: fixed;
+  z-index: 100;
+  height: 120px;
+  width: 100%;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  background: var(--black);
+}
+
+.cart__productList {
+  padding-top: 120px;
+  padding-bottom: 30px;
+}
+
+.cart__checkout {
+  display: flex;
+  flex-direction: column;
+ align-items: center;
+ height: 120px;
+ width: 100%;
+  background: var(--black);
+  gap: 0.5rem;
+}
+
+.cart__checkout p {
+  font-family: var(--secondayFont);
+  font-size: var(--fontSize-XS);
+}
+
+@media (min-width: 768px){
+.cart__checkout span{
+  font-size: var(--fontSize-S);
+}
+
+.cart__productList {
+  padding-top: 200px;
+  padding-bottom: 100px;
+}
+
+/*för at få checkout fixed, precis som title*/
+
+/*
+.cart__checkout {
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 20px;
+
+} */
+}

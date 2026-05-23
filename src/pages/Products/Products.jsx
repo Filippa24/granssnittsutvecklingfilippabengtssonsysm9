@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import UseFetch from "../hooks/useFetch";
-import ProductCard from "./cards/ProductCard";
-import FilterCard from "./cards/FilterCard";
+import UseFetch from "../../hooks/useFetch";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import FilterCard from "../../components/FilterCard/FilterCard";
+import "./Products.css";
 
 function Products() {
   //variabel för url
@@ -39,7 +40,7 @@ function Products() {
     <section className="products">
       <div className="products__background">
         <div className="products__layout">
-          <div className="product__list">
+          <div className="products__list">
             {/* mappar filteredproducts ist för bara products eftersom filteredproducts kan returnera både filtrerade produkter eller produkter beroende på situation, products kunde bara returnera alla products utan filter*/}
             {filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} /> //skicka hela product-objektet i en variabel som heter product

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./CartProductCard.css";
 
 //ikoner:
 import { MdHorizontalRule } from "react-icons/md";
