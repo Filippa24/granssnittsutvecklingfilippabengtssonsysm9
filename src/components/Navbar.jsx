@@ -6,7 +6,7 @@ function Navbar() {
 
   const location = useLocation();
   const isDark = location.pathname === "/products";
-  const hideNavbar = location.pathname.startsWith("/products/");
+  const hideNavbar = location.pathname.startsWith("/products/") || location.pathname === "/cart";
 
   //dölj navbaren om url börjar med /products/
   if (hideNavbar) {
@@ -32,7 +32,9 @@ function Navbar() {
         <Link to="/products">
           <h4 className="navbar__text">Products</h4>
         </Link>
+        <Link to="/cart">
         <h4 className="navbar__text">Cart</h4>
+        </Link>
         <h4 className="navbar__text">Create user</h4>
         <h4 className="navbar__text">Sign in</h4>
       </div>

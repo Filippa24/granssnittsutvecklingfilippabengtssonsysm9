@@ -7,7 +7,8 @@ import { MdClose } from "react-icons/md";
 
 //TO-DO: VISA 3 BILDER IST FÖR BARA EN I DETAILS 
 
-function ProductDetails() {
+//ta emot addtocart funktionen
+function ProductDetailsCard({addToCart}) {
   //variabel för att spara hämtad productid från urlen
   const { productId } = useParams();
   //variabel för att använda navigation
@@ -33,8 +34,8 @@ function ProductDetails() {
 
   return (
     <div className="details__background">
-      <button className="btn__close" onClick={() => navigate(-1)}>
-        <MdClose className="icon__close" />
+      <button className="btn__close btn" onClick={() => navigate(-1)}>
+        <MdClose className="icon__close icon" />
       </button>
       <div className="details__container">
         <h2 className="details__model--mobile">{product.model}</h2>
@@ -81,8 +82,8 @@ function ProductDetails() {
             <p>
               <span className="details__title">PRICE: </span>
               {product.price.toLocaleString("sv-SE")} SEK
-            </p>
-            <button className="btn__small">ADD TO CART</button>
+            </p>                         {/*call-back, skicka produkten till addtocart-funktionen (i app.js)*/}
+            <button className="btn__small" onClick={(() => addToCart(product))}>ADD TO CART</button>
           </div>
         </div>
       </div>
@@ -90,4 +91,4 @@ function ProductDetails() {
   );
 }
 
-export default ProductDetails;
+export default ProductDetailsCard;
