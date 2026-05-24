@@ -8,7 +8,7 @@ const CartContext = createContext();
 
 //2:
 //provider gör datan i den tillgänglig för alla komponenter som omsluts av  den, ex: <CartProvider><CartProvider/>
-export function CartProvider() {
+export function CartProvider({ children }) {
   //variabel för att spara produkter i som läggs i varukorgen
   const [cartItems, setCartItems] = useState(() => {
     //hämta listan cartitems och lägg i saved
@@ -23,7 +23,7 @@ export function CartProvider() {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
-  function AddToCart(product) {
+  function addToCart(product) {
     //kontrollera ifall stock är över 1/produkten finns i lager
     if (product.stock <= 0) return;
 
@@ -66,6 +66,14 @@ export function CartProvider() {
     //                        behåll item om dess id inte matchar produkten som ska tas bort
     setCartItems((prev) => prev.filter((item) => item.id !== product.id));
   }
+
+  return (
+    <CartContext.Provider
+      value={{ cartItems, addToCart, removeCartItem, discardCartItem }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
 }
 
 //3.

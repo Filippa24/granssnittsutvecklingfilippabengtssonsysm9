@@ -2,6 +2,7 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import UseFetch from "../../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
 import "./ProductDetailsCard.css";
+import { useCart } from "../../contexts/CartContext";
 
 //ikoner från react icons:
 import { MdClose } from "react-icons/md";
@@ -9,7 +10,10 @@ import { MdClose } from "react-icons/md";
 //TO-DO: VISA 3 BILDER IST FÖR BARA EN I DETAILS
 
 //ta emot addtocart funktionen
-function ProductDetailsCard({ addToCart }) {
+function ProductDetailsCard() {
+  //hämta context
+  const { addToCart } = useCart();
+
   //variabel för att spara hämtad productid från urlen
   const { productId } = useParams();
   //variabel för att använda navigation
