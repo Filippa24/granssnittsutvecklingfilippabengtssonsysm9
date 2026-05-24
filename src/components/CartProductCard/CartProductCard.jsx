@@ -1,21 +1,14 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./CartProductCard.css";
+import { useCart } from "../../contexts/CartContext";
 
 //ikoner:
 import { MdHorizontalRule } from "react-icons/md";
 import { FaPlus } from "react-icons/fa6";
 import { FaTrash } from "react-icons/fa";
 
-//ta emot product objektet från cart (i map skickar vi ett product objekt)
-function CartProductCard({
-  product,
-  cartItems,
-  setCartItems,
-  addToCart,
-  removeCartItem,
-  discardCartItem,
-}) {
+function CartProductCard({product}) {
+  const { addToCart, removeCartItem, discardCartItem } = useCart();
+
   return (
     <div className="cartProduct__background">
       <div className="cartProduct__container">

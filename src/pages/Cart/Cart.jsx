@@ -2,17 +2,16 @@ import CartProductCard from "../../components/CartProductCard/CartProductCard";
 import { MdClose } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import "./Cart.css";
+import { useCart } from "../../contexts/CartContext";
 
-//ta emot listan med cartItems från app.js / när man trycker på cart länken
-function Cart({
-  cartItems,
-  setCartItems,
-  addToCart,
-  removeCartItem,
-  discardCartItem,
-}) {
+
+function Cart() {
   //variabel för att använda navigation
   const navigate = useNavigate();
+
+  //hämta cartItems listan från cartcontext
+  const { cartItems } = useCart();
+
   return (
     <div className="cart__container">
       <button className="btn__close btn" onClick={() => navigate(-1)}>
@@ -25,11 +24,6 @@ function Cart({
           <CartProductCard
             key={product.id}
             product={product}
-            cartItems={cartItems}
-            setCartItems={setCartItems}
-            addToCart={addToCart}
-            removeCartItem={removeCartItem}
-            discardCartItem={discardCartItem}
           />
         ))}
       </div>

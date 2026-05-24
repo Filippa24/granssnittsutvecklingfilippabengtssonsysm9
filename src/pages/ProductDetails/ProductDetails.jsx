@@ -1,10 +1,10 @@
 import ProductDetailsCard from "../../components/ProductDetailsCard/ProductDetailsCard";
 
-function ProductDetails({ addToCart }) {
+function ProductDetails() {
   return (
     <section className="productDetails">
       <div className="container">
-        <ProductDetailsCard addToCart={addToCart} />
+        <ProductDetailsCard />
       </div>
     </section>
   );
