@@ -21,10 +21,7 @@ function Cart() {
       <div className="cart__productList">
         {/* mappa varje cartitem, koppla ihop med id. för varje cartitem skcika ett objekt som vi döper till product till cartProductCard för att skcika ut den aktuella produkten från cartitems listan*/}
         {cartItems.map((product) => (
-          <CartProductCard
-            key={product.id}
-            product={product}
-          />
+          <CartProductCard key={product.id} product={product} />
         ))}
       </div>
       <div className="cart__checkout">
@@ -36,7 +33,12 @@ function Cart() {
           SEK
         </p>
 
-        <button className="btn__small">CHECK OUT</button>
+        <button
+          className="btn__small"
+          onClick={() => navigate("/checkout")}
+        >
+          CHECK OUT
+        </button>
       </div>
     </div>
   );

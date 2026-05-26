@@ -31,6 +31,7 @@
   --fontSize-L: 2rem;
 
   --shadow: 1px 1px 3px #111010;
+  --inputHeight: 1.6rem;
 
   --black: #111010;
   --white: #e6e6e6;
@@ -66,10 +67,6 @@ body {
   color: var(--black);
 }
 
-.icon__close {
-  font-size: 24px;
-}
-
 .btn {
   display: flex;
   align-items: center;
@@ -86,13 +83,34 @@ body {
   z-index: 200;
 }
 
+.btn__back {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 200;
+}
+
 .trashCan {
   margin-left: 2rem;
 }
 
-/*för att få färg på icon__close:*/
+.icon__close {
+  font-size: 24px;
+}
+
+/*för att få färg på icon__close, den ikonen använder fill*/
 .icon__close path:last-child {
   fill: var(--red);
+}
+
+/* tillbaka ikonen använder stroke för att ändra bakgrund */
+.icon__back {
+  stroke: var(--red);
+  font-size: 24px;
+}
+
+.btn:hover .icon__back {
+  stroke: var(--grey);
 }
 
 /*vill att färgen på icon__close ska ändras redan när man hover på knappen, inte bara genom att hover på ikonen (användarvänlighet)*/

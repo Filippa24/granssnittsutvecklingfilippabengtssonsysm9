@@ -7,7 +7,10 @@ function Navbar() {
 
   const location = useLocation();
   const isDark = location.pathname === "/products";
-  const hideNavbar = location.pathname.startsWith("/products/") || location.pathname === "/cart";
+  const hideNavbar =
+    location.pathname.startsWith("/products/") ||
+    location.pathname === "/cart";
+    // || location.pathname === "/checkout";
 
   //dölj navbaren om url börjar med /products/
   if (hideNavbar) {

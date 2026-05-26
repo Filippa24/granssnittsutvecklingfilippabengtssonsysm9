@@ -3,11 +3,7 @@ import "./Home.css";
 function Home() {
   return (
     <section
-      className="hero"
-      style={{
-        backgroundImage: `url(${process.env.PUBLIC_URL}/Media/media.backgrounds/background.1.jpg)`,
-      }}
-    >
+      className="hero">
       <div className="hero__text-container">
         <h1 className="hero__title">Company name</h1>
         <h3 className="hero__mobile-text">Create user</h3>
@@ -19,3 +15,8 @@ function Home() {
 }
 
 export default Home;
+
+
+      // style={{
+      //   backgroundImage: `url(${process.env.PUBLIC_URL}/Media/media.backgrounds/background.1.jpg)`,
+      // }}
