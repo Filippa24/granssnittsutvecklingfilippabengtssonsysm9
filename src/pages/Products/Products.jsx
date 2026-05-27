@@ -1,24 +1,41 @@
 import React, { useState, useEffect } from "react";
-import UseFetch from "../../hooks/useFetch";
+import api from "../../services/api";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import FilterCard from "../../components/FilterCard/FilterCard";
 import "./Products.css";
 
 function Products() {
-  //variabel för url
-  const url = "http://localhost:3001/motorcycles";
-  //hämta valfri data från db.json via usefetch-hook, döper variabeln data till products ist
-  const { data: products, loading, error } = UseFetch(url);
-
-  //filtrera produkter baserat på make (filter drop down)------------------------------------------------------
+  //stateful variabler:
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   //variabel för vilket li man väljer i filter drop down
   const [selectedMake, setSelectedMake] = useState(null);
 
+  //alla produkter hämtas när sidan monteras (tom dependency array)
+  useEffect(() => {
+    //skapa funktionen som hämtar produkterna
+    async function fetchProducts() {
+      try {
+        //hämtar datan från apiets metod getProducts
+        const data = await api.getProducts();
+        //sätter data om det finns eller tom array till products
+        setProducts(data || []);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    //anropa funktionen så produkterna visas
+    fetchProducts();
+  }, []);
+
+  //filtrera produkter baserat på make (filter drop down)
   //om selectedMake är true visas de filtrerade produkterna annars visas alla produkter. värdena sparas i filteredProducts
   const filteredProducts = selectedMake
     ? products.filter((p) => p.make === selectedMake)
     : products;
-  //-------------------------------------------------------------------------------------------------------------
 
   console.log("products:", products);
   console.log("loading:", loading);
