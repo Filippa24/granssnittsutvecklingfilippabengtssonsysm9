@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
-//context är till för state hantering. acrtContext hanterar all state gällande cart och vi väljer var vi vill att det ska gälla (hela appen)
+//context är till för state hantering. cartContext hanterar all state gällande cart och vi väljer var vi vill att det ska gälla (hela appen)
 //skapa contexten (3 steg)
 
 //1:
@@ -9,13 +9,16 @@ const CartContext = createContext();
 //2:
 //provider gör datan i den tillgänglig för alla komponenter som omsluts av  den, ex: <CartProvider><CartProvider/>
 export function CartProvider({ children }) {
-  //variabel för att spara produkter i som läggs i varukorgen
+  //statefulvariabel för att spara produkter i som läggs i varukorgen
   const [cartItems, setCartItems] = useState(() => {
     //hämta listan cartitems och lägg i saved
     const saved = localStorage.getItem("cartItems");
     //returnera saved om det fanns något sparat redan, annars returnera en tom lista
     return saved ? JSON.parse(saved) : [];
   });
+
+  //stateful variabel för att lagra den lagda ordern. null räcker här för att endast visa den senaste orderna men om vi vill spara flera ordrar som historik används tom array []
+  const [order, setOrder] = useState(null);
 
   //spara i localStorage varje gång cartItems ändras
   useEffect(() => {
@@ -67,9 +70,40 @@ export function CartProvider({ children }) {
     setCartItems((prev) => prev.filter((item) => item.id !== product.id));
   }
 
+  //tömmer varukorgen, anropas i metoden nedan
+  function clearCart() {
+    setCartItems([]);
+  }
+
+  //funktion för att lägga en order, ta emot inputen som användaren skrivit i inputfälten
+  function placeOrder(customerInfo) {
+    /*skapar nytt objekt som innehåller produkterna, kundens info och datum för beställningen*/
+    const newOrder = {
+      items: cartItems,
+      customer: customerInfo /**/,
+      date: new Date().toLocaleDateString(),
+    };
+
+    //sätter neworder till order
+    setOrder(newOrder);
+
+    //för att kunna se att ordern gick genom i devtools
+    console.log("Order went through successfully,", newOrder);
+
+    //töm varukorgen
+    clearCart();
+  }
+
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeCartItem, discardCartItem }}
+      value={{
+        cartItems,
+        addToCart,
+        removeCartItem,
+        discardCartItem,
+        clearCart,
+        placeOrder,
+      }}
     >
       {children}
     </CartContext.Provider>

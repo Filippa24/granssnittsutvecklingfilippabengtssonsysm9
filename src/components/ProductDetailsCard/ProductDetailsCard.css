@@ -1,4 +1,3 @@
-
 .details__background {
   width: 100%;
   min-height: 100vh;
@@ -66,8 +65,8 @@
   .details__container {
     flex-direction: row;
     align-items: stretch; /*för att få product.model och product.price i linje med bildens topp och botten*/
-    min-width: 700px;
-    max-width: 75%;
+    min-width: 600px;
+    max-width: 70%;
     gap: 5vw;
     padding-top: 10vh;
     padding-bottom: 10vh;
@@ -124,11 +123,15 @@
   }
 
   .details__container--text {
+    /* max-width: 500px; */
     gap: 0.4rem;
   }
 }
 
 @media (min-width: 1300px) {
+  .details__container {
+    max-width: 60%;
+  }
   .details__image {
     max-width: 525px;
   }
