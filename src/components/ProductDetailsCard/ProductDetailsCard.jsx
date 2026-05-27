@@ -3,6 +3,8 @@ import UseFetch from "../../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
 import "./ProductDetailsCard.css";
 import { useCart } from "../../contexts/CartContext";
+import api from "../../services/api";
+import React, { useState, useEffect } from "react";
 
 //ikoner från react icons:
 import { MdClose } from "react-icons/md";
@@ -11,19 +13,36 @@ import { MdClose } from "react-icons/md";
 
 //ta emot addtocart funktionen
 function ProductDetailsCard() {
+  //stateful variabler
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  
   //hämta context
   const { addToCart } = useCart();
-
   //variabel för att spara hämtad productid från urlen
   const { productId } = useParams();
   //variabel för att använda navigation
   const navigate = useNavigate();
 
-  //hämta och spara urlen för en specifik produkt
-  const url = `http://localhost:3001/motorcycles/${productId}`;
-
-  //hämta datan från db.json via useFetch hook, skicka in urlen så att vi får hämtat rätt data för rätt produkt
-  const { data: product, loading, error } = UseFetch(url);
+   //alla produkter hämtas när sidan monteras (tom dependency array)
+   useEffect(() => {
+     //skapa funktionen som hämtar produkterna
+     async function fetchProductById(productId) {
+       try {
+         //hämtar datan från apiets metod getProducts
+         const data = await api.getProductById(productId);
+         //sätter data om det finns eller tom array till products
+         setProduct(data);
+       } catch (err) {
+         setError(err.message);
+       } finally {
+         setLoading(false);
+       }
+     }
+     //anropa funktionen så produkterna visas
+     fetchProductById(productId);
+   }, []);
 
   if (loading) {
     return (

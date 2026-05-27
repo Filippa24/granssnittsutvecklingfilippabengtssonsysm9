@@ -47,6 +47,13 @@ export async function getProducts() {
   });
 }
 
+export async function getProductById(id){
+  return request(`/motorcycles/${id}`, {
+    method: "GET",
+  })
+}
+
 export default {
   getProducts,
+  getProductById,
 };
