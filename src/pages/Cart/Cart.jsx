@@ -39,10 +39,10 @@ function Cart() {
 
         <button
           className="btn__small"
-          onClick={() => {
-            if (cartItems.length === 0) return; //kan inte navigera till checkout om varukorgen är tom
-            navigate("/checkout");
-          }}
+          //när man klickar på checkout-knappen navigerar vi till checkout och vi skickar med ett objekt som säger att vi kommer från cart
+          //på så sätt vet sen checkout att vi "får" vara på den pagen (se checkout.jsx)
+          onClick={() => navigate("/checkout", { state: { fromCart: true } })}
+          //knappen är disabled om det inte finns några varor i korgen
           disabled={cartItems.length === 0}
         >
           CHECK OUT

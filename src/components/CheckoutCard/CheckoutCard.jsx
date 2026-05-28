@@ -41,7 +41,8 @@ function CheckoutCard() {
     //töm inputfält via metod nedan
     clearInput();
 
-    navigate("/confirmation");
+    //skicka ett state objekt som säger att vi kommer från checkout page
+    navigate("/confirmation", { state: { fromCheckout: true } });
   }
 
   function validate() {

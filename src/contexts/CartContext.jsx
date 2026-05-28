@@ -90,8 +90,7 @@ export function CartProvider({ children }) {
     //för att kunna se att ordern gick genom i devtools
     console.log("Order went through successfully,", newOrder);
 
-    //töm varukorgen
-    clearCart();
+    //tömmer cart i confirmation.jsx för att låta tillståndet fortsätta in dit
   }
 
   return (
