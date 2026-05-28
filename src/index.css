@@ -67,6 +67,18 @@ body {
   color: var(--black);
 }
 
+/*när knappen är disabled*/
+.btn__small:disabled {
+  opacity: 0.5;
+  cursor: default; 
+}
+
+/*ingen hover effekt när knappen är disabled, behåller standardfärger ist för ändra färg när man hover*/
+.btn__small:disabled:hover {
+  background: var(--red); 
+  color: inherit;
+}
+
 .btn {
   display: flex;
   align-items: center;

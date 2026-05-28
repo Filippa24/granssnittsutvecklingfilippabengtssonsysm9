@@ -1,4 +1,4 @@
-.errorMessage {
+.error__message {
   height: 2rem;
   font-size: var(--fontSize-XXS);
   color: var(--red) !important;

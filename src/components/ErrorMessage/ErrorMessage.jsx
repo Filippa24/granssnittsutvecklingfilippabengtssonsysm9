@@ -3,7 +3,7 @@ function ErrorMessage({ error }) {
     
     //placera ErrorMessage i CheckoutCards jsx för att visa felmeddelandena i UI
   return (
-    <div className="errorMessage">
+    <div className="error__message">
       {(error.firstName || error.lastName || error.email || error.address) && (
         <span>Please fill in all required fields to place your order. </span>
       )}

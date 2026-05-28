@@ -2,8 +2,8 @@ import CartProductCard from "../../components/CartProductCard/CartProductCard";
 import { MdClose } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import "./Cart.css";
+import "../../components/ErrorMessage/ErrorMessage.css";
 import { useCart } from "../../contexts/CartContext";
-
 
 function Cart() {
   //variabel för att använda navigation
@@ -14,7 +14,7 @@ function Cart() {
 
   return (
     <div className="cart__container">
-      <button className="btn__close btn" onClick={() => navigate(-1)}>
+      <button className="btn__close btn" onClick={() => navigate("/products")}>
         <MdClose className="icon__close" />
       </button>
       <h1 className="cart__title">Your cart</h1>
@@ -25,6 +25,10 @@ function Cart() {
         ))}
       </div>
       <div className="cart__checkout">
+        {/* visa error om varukorgen är tom */}
+        {cartItems.length === 0 && (
+          <p className="error__message">Your cart is empty.</p>
+        )}
         <p>
           <span>Total </span>
           {cartItems
@@ -35,7 +39,11 @@ function Cart() {
 
         <button
           className="btn__small"
-          onClick={() => navigate("/checkout")}
+          onClick={() => {
+            if (cartItems.length === 0) return; //kan inte navigera till checkout om varukorgen är tom
+            navigate("/checkout");
+          }}
+          disabled={cartItems.length === 0}
         >
           CHECK OUT
         </button>
