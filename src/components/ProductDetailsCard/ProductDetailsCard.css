@@ -13,7 +13,7 @@
   justify-content: center;
   align-items: center;
   width: 80%;
-  max-width: 500px;
+  max-width: 450px;
   gap: 0.5rem;
 }
 
@@ -35,7 +35,7 @@
 
 .details__row p {
   font-family: var(--secondayFont);
-  font-size: var(--fontSize-XXS);
+  font-size: var(--fontSize-XS);
 }
 
 /* egen rad för price och btn */
@@ -123,16 +123,20 @@
   }
 
   .details__container--text {
-    /* max-width: 500px; */
+    max-width: 500px;
     gap: 0.4rem;
+  }
+
+  .details__container {
+    max-width: 60%;
   }
 }
 
-@media (min-width: 1300px) {
+/* @media (min-width: 1300px) {
   .details__container {
     max-width: 60%;
   }
   .details__image {
     max-width: 525px;
   }
-}
+} */

@@ -4,19 +4,19 @@
   box-sizing: border-box;
   font-family: var(--primaryFont);
   color: var(--white);
+}
 
-  /* ta bort standard-css för knappar */
-  button {
-    appearance: none;
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin: 0;
-    font-family: inherit;
-    font-size: inherit;
-    color: inherit;
-    cursor: pointer;
-  }
+/* ta bort standard-css för knappar */
+button {
+  appearance: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  cursor: pointer;
 }
 
 :root {
@@ -35,7 +35,7 @@
 
   --black: #111010;
   --white: #e6e6e6;
-  --red: #a3111b;
+  --red: #A3111B;
   --grey: #a1a1a1;
 }
 
@@ -44,7 +44,7 @@
 }
 
 html {
-  font-size: 16px;
+  font-size: 13px;
 }
 
 /*för att undvika vit bakgrund som syns bakom komponenter ibland*/
@@ -56,9 +56,9 @@ body {
 
 .btn__small {
   background: var(--red);
-  width: 9rem;
+  width: 11rem;
   height: 1.6rem;
-  font-size: 11px;
+  font-size: var(--fontSize-XXS);
   border-radius: 6px;
 }
 

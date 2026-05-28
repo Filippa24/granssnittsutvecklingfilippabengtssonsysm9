@@ -1,14 +1,15 @@
 .product__container {
-  width: 80%;
+  width: 60%;
   background: var(--black);
   display: flex;
   flex-direction: column;
   gap: 0.25rem; /*lite luft mellan title, image och price */
+  padding-top: 1rem;
 }
 
 .product__title {
   font-size: var(--fontSize-S);
-  height: 5rem;
+  height: 3rem;
   overflow: hidden;
   display: flex;
   align-items: flex-end;
@@ -36,4 +37,16 @@
 .product__title--hovered,
 .product__price--hovered {
   color: var(--red);
+}
+
+@media (min-width: 500px) {
+  .product__container {
+    width: 90%;
+  }
+}
+
+@media (min-width: 768px) {
+  .product__title {
+    font-size: var(--fontSize-S);
+  }
 }
