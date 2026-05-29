@@ -1,0 +1,30 @@
+.confirmation__background {
+  background-color: var(--black);
+  background: url(../../../public/Media/media.backgrounds/background.1.transparent.png);
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadein 0.2s ease-in;
+}
+
+.link__home {
+padding: 1rem;
+  color: var(--red);
+  font-size: var(--fontSize-XS);
+  text-shadow: var(--shadow);
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 200;
+}
+
+.link__home:hover {
+  color: var(--grey);
+  cursor: pointer;
+}

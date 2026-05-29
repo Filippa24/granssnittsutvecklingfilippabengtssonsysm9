@@ -34,7 +34,7 @@
 }
 
 .details__row p {
-  font-family: var(--secondayFont);
+  font-family: var(--secondaryFont);
   font-size: var(--fontSize-XS);
 }
 

@@ -6,7 +6,8 @@ import { MdHorizontalRule } from "react-icons/md";
 import { FaPlus } from "react-icons/fa6";
 import { FaTrash } from "react-icons/fa";
 
-function CartProductCard({product}) {
+//skicka med prop showButtons eftersom jag återanvänder detta card i confirmation page och då vill jag behålla allt förutom knapparna
+function CartProductCard({product, showButtons = true}) {
   const { addToCart, removeCartItem, discardCartItem } = useCart();
 
   return (
@@ -27,18 +28,29 @@ function CartProductCard({product}) {
 
           <div className="cartProduct__icons">
             <div className="cartProduct__quantity--container">
-              <button className="btn" onClick={() => addToCart(product)}>
-                <FaPlus className="icon" />
-              </button>
+              {/*visa knapparna om showbuttons är true (om det till vänster om && är true, visa det till höger )*/}
+              {showButtons && (
+                <button className="btn" onClick={() => addToCart(product)}>
+                  <FaPlus className="icon" />
+                </button>
+              )}
 
               <p className="cartProduct__quantity">{product.quantity}</p>
-              <button className="btn" onClick={() => removeCartItem(product)}>
-                <MdHorizontalRule className="icon" />
-              </button>
+
+              {/*visa knapparna om showbuttons är true (om det till vänster om && är true, visa det till höger )*/}
+              {showButtons && (
+                <button className="btn" onClick={() => removeCartItem(product)}>
+                  <MdHorizontalRule className="icon" />
+                </button>
+              )}
             </div>
-            <button className="btn" onClick={() => discardCartItem(product)}>
-              <FaTrash className="icon trashCan" />
-            </button>
+
+            {/*visa knapparna om showbuttons är true (om det till vänster om && är true, visa det till höger )*/}
+            {showButtons && (
+              <button className="btn" onClick={() => discardCartItem(product)}>
+                <FaTrash className="icon trashCan" />
+              </button>
+            )}
           </div>
         </div>
       </div>

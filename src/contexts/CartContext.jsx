@@ -77,11 +77,24 @@ export function CartProvider({ children }) {
 
   //funktion för att lägga en order, ta emot inputen som användaren skrivit i inputfälten
   function placeOrder(customerInfo) {
-    /*skapar nytt objekt som innehåller produkterna, kundens info och datum för beställningen*/
+
+    //generera ett random ordernummer, siffror och bokstäver, att använda när vi skapar order
+    const orderNumber = Math.random()
+      .toString(36) //konverterar ett random tal till base36 (innehåller 0-9 och a-z),
+      .substring(2, 6) //blir 4 tecken långt
+      .toUpperCase(); //gör till stora bokstäver
+
+      //generera leveransdatum 5 dagar efter ordern är lagd
+const deliveryDate = new Date();
+deliveryDate.setDate(deliveryDate.getDate() + 5);
+
+    /*skapar nytt objekt som innehåller ordernummer, produkterna, kundens info och datum för beställningen*/
     const newOrder = {
+      orderNumber,
       items: cartItems,
       customer: customerInfo /**/,
       date: new Date().toLocaleDateString(),
+      deliveryDate: deliveryDate.toLocaleDateString(),
     };
 
     //sätter neworder till order
@@ -102,6 +115,7 @@ export function CartProvider({ children }) {
         discardCartItem,
         clearCart,
         placeOrder,
+        order
       }}
     >
       {children}

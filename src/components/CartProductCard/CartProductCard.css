@@ -12,12 +12,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 70%;
   gap: 0.5rem;
 }
 
 .cartProduct__image {
  width: 100%;
+ max-width: 300px;
   border-radius: 6px;
   border: 1px solid var(--grey);
 }
@@ -41,7 +42,7 @@
 }
 
 .cartProduct__price {
-  font-family: var(--secondayFont);
+  font-family: var(--secondaryFont);
   font-size: var(--fontSize-XXS);
 }
 
@@ -85,7 +86,7 @@
 }
 
 .cartProduct__price {
-  font-family: var(--secondayFont);
+  font-family: var(--secondaryFont);
   font-size: var(--fontSize-XS);
 }
 

@@ -1,9 +1,11 @@
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useCart } from "../../contexts/CartContext";
+import "./Confirmation.css";
+import ConfirmationCard from "../../components/ConfirmationCard/ConfirmationCard";
 
 function Confirmation() {
-
+const navigate = useNavigate();
      const location = useLocation();
      //för att kunna använda clearcart() från cartcontext
      const { clearCart } = useCart();
@@ -18,7 +20,14 @@ function Confirmation() {
        return <Navigate to="/" />;
      }
 
-  return <div>Confirmation</div>;
+  return (
+    <div className="confirmation__background">
+      <ConfirmationCard />
+      <Link to="/">
+        <h4 className="link__home">Home</h4>
+      </Link>
+    </div>
+  );
 }
 
 export default Confirmation;

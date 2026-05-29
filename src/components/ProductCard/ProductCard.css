@@ -17,7 +17,7 @@
 }
 
 .product__price {
-  font-family: var(--secondayFont);
+  font-family: var(--secondaryFont);
   font-size: var(--fontSize-XS);
 }
 

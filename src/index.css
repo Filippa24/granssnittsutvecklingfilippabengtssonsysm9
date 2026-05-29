@@ -21,7 +21,7 @@ button {
 
 :root {
   --primaryFont: "Zen Dots", sans-serif;
-  --secondayFont: "Inter", sans-serif;
+  --secondaryFont: "Inter", sans-serif;
   --accentFont: "Bungee Hairline", sans-serif;
 
   --fontSize-XXS: 0.8rem;
