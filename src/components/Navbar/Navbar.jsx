@@ -37,9 +37,11 @@ function Navbar() {
           <h4 className="navbar__text">Products</h4>
         </Link>
         <Link to="/cart">
-        <h4 className="navbar__text">Cart</h4>
+          <h4 className="navbar__text">Cart</h4>
         </Link>
-        <h4 className="navbar__text">Create user</h4>
+        <Link to="/register">
+          <h4 className="navbar__text">Create user</h4>
+        </Link>
         <h4 className="navbar__text">Sign in</h4>
       </div>
     </section>

@@ -1,0 +1,95 @@
+.registerCard {
+      display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.registerCard__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  max-width: 600px;
+  min-height: 400px;
+  gap: 60px;
+  padding-top: 80px; /*behöver eftersom knapparna i mobile är i column så tar de upp mer plats än i desktop och form blir inte centrerat vertikalt*/
+}
+
+.registerCard__title {
+  text-align: center;
+  width: 100%;
+  font-size: var(--fontSize-S);
+}
+
+.registerCard__wrapper {
+     display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  height: 110px;
+}
+
+.registerCard__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.registerCard__inputField {
+  background: transparent;
+  border: 1px solid var(--grey);
+  border-radius: 6px;
+  height: var(--inputHeight);
+  width: 350px;
+  text-align: center;
+}
+
+.registerCard__inputField::placeholder {
+  text-align: center;
+}
+
+.registerCard__button {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+
+@media (min-width: 768px) {
+  .registerCard__title {
+    font-size: var(--fontSize-M);
+  }
+  .registerCard__inputField {
+    width: 400px;
+  }
+  /* .registerCard__button {
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem; 
+  }*/
+  .registerCard__container {
+    padding-top: 0rem;
+    max-width: 60%;
+  }
+}
+
+.registerCard__inputField--error {
+  border-color: var(--red);
+}
+
+@media (min-width: 860px) {
+  .registerCard__container {
+    width: 60%;
+    max-width: 70%;
+  }
+  .registerCard__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+  }
+}

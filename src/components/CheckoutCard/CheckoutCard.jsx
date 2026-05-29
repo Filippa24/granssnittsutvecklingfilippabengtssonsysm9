@@ -130,8 +130,8 @@ function CheckoutCard() {
             />
           </form>
 
-          {/*skicka objektet till komponenten, props drilling*/}
-          <ErrorMessage error={error} />
+          {/*skicka objektet till komponenten, props drilling, skicka också ett objekt som berättar vilken page ErrorMessage ska visas i så att jag kan toggla och visa rätt error meddelande för just detta card*/}
+          <ErrorMessage error={error} page={"checkout"}/>
         </div>
 
         <div className="form__buttons">
