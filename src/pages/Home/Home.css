@@ -26,6 +26,7 @@
 .hero__slogan {
   color: var(--red);
   font-family: var(--accentFont);
+  font-size: var(--fontSize-M);
   text-align: center;
   text-shadow: var(--shadow);
   margin-top: 2rem;
@@ -39,11 +40,11 @@
   width: 80%;
 }
 
-.hero__mobile-text {
+/* .hero__mobile-text {
   color: var(--red);
   font-size: var(--fontSize-XS);
   text-shadow: var(--shadow);
-}
+} */
 
 /* för att slippa se den vita blinkningen när man går från home till andra komponenter: */
 .loading__background {

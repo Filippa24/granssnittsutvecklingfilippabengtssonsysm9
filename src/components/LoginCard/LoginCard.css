@@ -1,4 +1,4 @@
-.registerCard {
+.loginCard {
       display: flex;
   justify-content: center;
   align-items: center;
@@ -6,7 +6,7 @@
   width: 100%;
 }
 
-.registerCard__container {
+.loginCard__container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,41 +15,40 @@
   max-width: 600px;
   min-height: 400px;
   gap: 60px;
-  padding-top: 80px; /*behöver eftersom knapparna i mobile är i column så tar de upp mer plats än i desktop och form blir inte centrerat vertikalt*/
 }
 
-.registerCard__div {
-   display: flex;
+.loginCard__div {
+    display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
 }
 
-.registerCard__title {
+.loginCard__title {
   text-align: center;
   width: 100%;
   font-size: var(--fontSize-M);
 }
 
-.registerCard__div p {
-  font-family: var(--secondaryFont);
+.loginCard__div p {
+    font-family: var(--secondaryFont);
     color: var(--grey);
 }
 
-.registerCard__link {
-  font-family: var(--secondaryFont);
+.loginCard__link {
+    font-family: var(--secondaryFont);
     color: var(--white);
 }
 
-.registerCard__wrapper {
+.loginCard__wrapper {
      display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  height: 110px;
+  height: 50px;
 }
 
-.registerCard__form {
+.loginCard__form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -57,7 +56,7 @@
   gap: 0.5rem;
 }
 
-.registerCard__inputField {
+.loginCard__inputField {
   background: transparent;
   border: 1px solid var(--grey);
   border-radius: 6px;
@@ -66,11 +65,11 @@
   text-align: center;
 }
 
-.registerCard__inputField::placeholder {
+.loginCard__inputField::placeholder {
   text-align: center;
 }
 
-.registerCard__button {
+.loginCard__button {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -78,33 +77,28 @@
 
 
 @media (min-width: 768px) {
-  .registerCard__title {
+  .loginCard__title {
     font-size: var(--fontSize-L);
   }
-  .registerCard__inputField {
+  .loginCard__inputField {
     width: 400px;
   }
-  /* .registerCard__button {
-    display: flex;
-    flex-direction: row;
-    gap: 0.75rem; 
-  }*/
-  .registerCard__container {
+  .loginCard__container {
     padding-top: 0rem;
     max-width: 60%;
   }
 }
 
-.registerCard__inputField--error {
+.loginCard__inputField--error {
   border-color: var(--red);
 }
 
 @media (min-width: 860px) {
-  .registerCard__container {
+  .loginCard__container {
     width: 60%;
     max-width: 70%;
   }
-  .registerCard__buttons {
+  .loginCard__buttons {
     display: flex;
     flex-direction: row;
     gap: 2rem;

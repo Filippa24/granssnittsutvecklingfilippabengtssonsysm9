@@ -82,9 +82,18 @@ export async function register({username, password, confirmPassword, email}) {
   // });
 }
 
+export async function login({ email, password }) {
+  //AKTIVERA NÄR BACKEND FINNS (ändra i login i authcontext också)
+  // return request("/login", {
+  //   method: "POST",
+  //   body: JSON.stringify({ email, password }),
+  // });
+}
+
 
 export default {
   getProducts,
   getProductById,
-  register
+  register,
+  saveToken,
 };

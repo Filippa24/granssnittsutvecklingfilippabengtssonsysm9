@@ -1,7 +1,7 @@
 import "./RegisterCard.css";
 import api from "../../services/api";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { useAuth } from "../../contexts/AuthContext";
 
@@ -47,7 +47,7 @@ function RegisterCard() {
   }
 
   function validate() {
-    //variabel för att spara nya errors som kan skapas när man lägger en order. skapar ett objekt eftersom vi vill kunna nå det specifika värdet lättar än om vi skulle haft det i en array och behövt loopa
+    //variabel för att spara nya errors som kan skapas när man skapar en användare. skapar ett objekt eftersom vi vill kunna nå det specifika värdet lättar än om vi skulle haft det i en array och behövt loopa
     const newErrors = {};
 
     //om stateful-variablerna är false då innebär det att vi har ett error på den variabeln och värdet för motsvarande variabel i newErrors sätts till true
@@ -74,10 +74,18 @@ function RegisterCard() {
   return (
     <div className="registerCard">
       <div className="registerCard__container">
-        <h1 className="registerCard__title">
-          Join the family, create a user below.
-        </h1>
-
+        <div className="registerCard__div">
+          <h1 className="registerCard__title">
+            Join the family, create a user below.
+          </h1>
+          <p>
+            Already have an account? Click{" "}
+            <Link to="/login" className="registerCard__link">
+              here
+            </Link>{" "}
+            to login.
+          </p>
+        </div>
         <div className="registerCard__wrapper">
           <form className="registerCard__form">
             <input
@@ -124,7 +132,7 @@ function RegisterCard() {
               className={`registerCard__inputField ${error.email || error.emailFormat ? "registerCard__inputField--error" : ""}`}
               type="text"
               value={email}
-              placeholder="email"
+              placeholder="Email"
               onChange={(e) => {
                 //sätt värdet användaren matar in till email
                 setEmail(e.target.value);
@@ -140,8 +148,8 @@ function RegisterCard() {
             />
           </form>
 
-          {/*skicka error objektet till komponenten (props drilling), skicka också ett objekt som berättar vilken page ErrorMessage ska visas i så att jag kan toggla och visa rätt error meddelande för just detta card */}
-          <ErrorMessage error={error} page={register} />
+          {/*skicka error objektet till komponenten (props drilling), skicka också vilken page ErrorMessage ska visas i så att jag kan toggla och visa rätt error meddelande för just detta card */}
+          <ErrorMessage error={error} page="register" />
         </div>
 
         <div className="registerCard__button">

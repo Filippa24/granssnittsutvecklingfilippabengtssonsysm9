@@ -1,5 +1,5 @@
 import React, { useState, createContext, useContext } from "react";
-import api, { isAuthenticated, saveToken, logout } from "../services/api";
+import api, { isAuthenticated } from "../services/api";
 
 //context är till för state hantering. AuthContext hanterar all state gällande om en användare är inloggad eller inte och vi väljer var vi vill att det ska gälla (hela appen)
 //skapa contexten (3 steg)
@@ -21,8 +21,19 @@ export function AuthProvider({ children }) {
     setAuthed(true);
   }
 
+   function login(token) {
+     //BYT TILL RIKTIGT API ANROP NÄR BACKEND FINNS (ändra i login i api.jsx också)
+     api.saveToken(token); //sparar token i localstorage via api.jsx
+     setAuthed(true); //uppdaterar auth tillstånd
+   }
+
+   function logout() {
+     api.logout(); //tar bort token från localstorage via api.jsx
+     setAuthed(false); //uppdaterar auth tillstånd
+   }
+
   return (
-    <AuthContext.Provider value={{ authed, register }}>
+    <AuthContext.Provider value={{ authed, register, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

@@ -13,7 +13,7 @@
   background: var(--black);
 }
 
-.navbar__mobile--container {
+.navbar__container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -22,7 +22,7 @@
 
 .navbar__mobile--text,
 .navbar__text {
-  padding: 1rem;
+  padding: 0.5rem;
   color: var(--red);
   font-size: var(--fontSize-XS);
   text-shadow: var(--shadow);
@@ -34,9 +34,9 @@
   cursor: pointer;
 }
 
-.navbar__container {
+/* .navbar__container {
   display: none;
-}
+} */
 
 /* link, fast i css heter det ändå a: */
 a {
