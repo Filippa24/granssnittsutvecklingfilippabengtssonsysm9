@@ -2,15 +2,17 @@
   background-color: var(--black);
   background: url(../../../public/Media/media.backgrounds/background.2.Mobile.transparent.png);
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   box-sizing: border-box;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   animation: fadein 0.2s ease-in;
+  padding-top: 17vh;
 }
 
 @media (min-width: 768px) {

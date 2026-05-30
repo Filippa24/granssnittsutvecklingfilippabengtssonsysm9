@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./Cart.css";
 import "../../components/ErrorMessage/ErrorMessage.css";
 import { useCart } from "../../contexts/CartContext";
+import Footer from "../../components/Footer/Footer";
 
 function Cart() {
   //variabel för att använda navigation
@@ -48,6 +49,7 @@ function Cart() {
           CHECK OUT
         </button>
       </div>
+      <Footer/>
     </div>
   );
 }

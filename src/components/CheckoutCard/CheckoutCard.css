@@ -48,6 +48,7 @@
   height: var(--inputHeight);
   width: 350px;
   text-align: center;
+  font-size: var(--fontSize-XS);
 }
 
 .form__inputField::placeholder {

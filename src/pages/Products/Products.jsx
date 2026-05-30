@@ -3,6 +3,7 @@ import api from "../../services/api";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import FilterCard from "../../components/FilterCard/FilterCard";
 import "./Products.css";
+import Footer from "../../components/Footer/Footer";
 
 function Products() {
   //stateful variabler:
@@ -70,6 +71,7 @@ function Products() {
           />
         </div>
       </div>
+      <Footer/>
     </section>
   );
 }

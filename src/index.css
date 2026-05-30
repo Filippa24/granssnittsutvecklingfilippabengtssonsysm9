@@ -107,7 +107,7 @@ body {
 }
 
 .icon__close {
-  font-size: 24px;
+  font-size: var(--fontSize-M);
 }
 
 /*för att få färg på icon__close, den ikonen använder fill*/
@@ -118,7 +118,7 @@ body {
 /* tillbaka ikonen använder stroke för att ändra bakgrund */
 .icon__back {
   stroke: var(--red);
-  font-size: 24px;
+  font-size: var(--fontSize-M);
 }
 
 .btn:hover .icon__back {

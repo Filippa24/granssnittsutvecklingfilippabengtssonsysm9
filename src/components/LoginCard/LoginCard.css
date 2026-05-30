@@ -1,9 +1,9 @@
 .loginCard {
-      display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   width: 100%;
+  height: 100vh;
 }
 
 .loginCard__container {
@@ -18,10 +18,10 @@
 }
 
 .loginCard__div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .loginCard__title {
@@ -31,17 +31,17 @@
 }
 
 .loginCard__div p {
-    font-family: var(--secondaryFont);
-    color: var(--grey);
+  font-family: var(--secondaryFont);
+  color: var(--grey);
 }
 
 .loginCard__link {
-    font-family: var(--secondaryFont);
-    color: var(--white);
+  font-family: var(--secondaryFont);
+  color: var(--white);
 }
 
 .loginCard__wrapper {
-     display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
@@ -63,6 +63,7 @@
   height: var(--inputHeight);
   width: 350px;
   text-align: center;
+  font-size: var(--fontSize-XS);
 }
 
 .loginCard__inputField::placeholder {
@@ -74,7 +75,6 @@
   flex-direction: column;
   gap: 0.5rem;
 }
-
 
 @media (min-width: 768px) {
   .loginCard__title {
