@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useCart } from "../../contexts/CartContext";
 import "./Confirmation.css";
 import ConfirmationCard from "../../components/ConfirmationCard/ConfirmationCard";
+import Footer from "../../components/Footer/Footer";
 
 function Confirmation() {
 const navigate = useNavigate();
@@ -26,6 +27,7 @@ const navigate = useNavigate();
       <Link to="/">
         <h4 className="link__home">Home</h4>
       </Link>
+      <Footer />
     </div>
   );
 }

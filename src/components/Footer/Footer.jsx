@@ -11,8 +11,7 @@ function Footer() {
     const location = useLocation();
  const hideFooter =
    location.pathname === "/" ||
-   location.pathname.startsWith("/products/") ||
-   location.pathname === "/confirmation";
+   location.pathname.startsWith("/products/");
 
  //dölj footer om url stämmer med någon av pathsen ovan
  if (hideFooter) {
