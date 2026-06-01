@@ -7,16 +7,7 @@ function Navbar() {
 
   const location = useLocation();
   const isDark = location.pathname === "/products";
-  const hideNavbar =
-    location.pathname.startsWith("/products/") ||
-    location.pathname === "/cart"
-    || location.pathname === "/confirmation";
-
-  //dölj navbaren om url börjar med /products/
-  if (hideNavbar) {
-    return null;
-  }
-
+ 
   return (
     // om isdark är true får navbar även klassen navbar--dark. men om isdark är false är navbar bara navbar, ingen css ändras
     <section className={`navbar ${isDark ? "navbar--dark" : ""}`}>
