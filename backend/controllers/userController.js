@@ -72,5 +72,44 @@ const accessToken = jwt.sign(
   }
 });
 
-//exportera funktionen så att vi kan nå den i routes
-module.exports = { registerUser };
+
+//@desc Login user
+//@route POST /users/login
+//@access public
+const loginUser = asyncHandler(async (req, res) => {
+  //hämta data från body
+  const { username, password } = req.body;
+
+  //validera input
+  if (!username || !password) {
+    res.status(400);
+    throw new Error("Please fill all required fields to sign in.");
+  }
+
+  //kontrollera om användaren redan finns, baserat på username
+  const userExists = await User.findOne({ username });
+
+  //om användaren finns, jämför lösenord som användaren skrev in med hashade lösenordet i databasen, måste då hasha det nya lösenordet som får samma salt, körs samma antal gånger, körs med samma algoritm och får samma värde som det andra hashade lösenordet så vi nu kan jämföra de med varandra
+  if (userExists && (await bcrypt.compare(password, userExists.password))) {
+    //om inlogg är ok, skapa token som bevisar att användaren är inloggad
+    const accessToken = jwt.sign(
+       {
+         user: {
+           id: userExists.id,
+           username: userExists.username,
+         },
+       },
+       process.env.ACCESS_TOKEN_SECRET,
+       { expiresIn: "15m" },
+     );
+    
+    //returnera token om inlogg är ok
+    res.status(200).json({ accessToken });
+  } else {
+    res.status(401);
+    throw new Error("Incorrect username or password.");
+  }
+});
+
+//exportera funktionerna så vi kan nå de i routes
+module.exports = { registerUser, loginUser };

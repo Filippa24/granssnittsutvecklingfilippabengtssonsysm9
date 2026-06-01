@@ -20,8 +20,7 @@ export function AuthProvider({ children }) {
     setAuthed(true);
   }
 
-  function login(token) {
-    //BYT TILL RIKTIGT API ANROP NÄR BACKEND FINNS (ändra i login i api.jsx också)
+  async function login(token) {
     api.saveToken(token); //sparar token i localstorage via api.jsx
     setAuthed(true); //uppdaterar auth tillstånd
   }

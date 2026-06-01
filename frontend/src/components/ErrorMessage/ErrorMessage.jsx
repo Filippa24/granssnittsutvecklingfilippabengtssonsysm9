@@ -1,6 +1,6 @@
 //komponent för att hantera errormessages
 function ErrorMessage({ error, page }) {
-  //placera ErrorMessage i CheckoutCards jsx för att visa felmeddelandena i UI
+  //placera ErrorMessage i lämplig komponent för att visa felmeddelandena i UI
   return (
     <div className="error__message">
       {(error.firstName || error.lastName || error.email || error.address || error.username || error.password) && (

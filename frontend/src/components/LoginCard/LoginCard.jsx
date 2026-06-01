@@ -28,22 +28,17 @@ function LoginCard() {
       return;
     }
     try {
-      // BYT TILL RIKTIGT API ANROP NÄR BACKEND FINNS
-      // const data = await api.login({ username, password });
-      // if (data.accessToken) {
-      //   login(data.accessToken);
-      //   navigate("/products");
-      // }
+      const data = await api.login({ username, password });
+      if (data.accessToken) {
+        login(data.accessToken);
+        //nollställ error
+        setError({});
+        //töm inputfält via metod nedan
+        clearInput();
+        //navigera till products vid successful login
+        navigate("/products");
+      }
 
-      //mock tills backend finns:
-      login("token");
-
-      //nollställ error
-      setError({});
-      //töm inputfält via metod nedan
-      clearInput();
-      //navigera till products vid successful login
-      navigate("/products");
     } catch (err) {
       //sätter ett generellt felmeddelande för ev andra problem med inloggning
       setError({ general: err.message });
@@ -84,7 +79,7 @@ function LoginCard() {
         <div className="loginCard__wrapper">
           <form className="loginCard__form">
             <input
-              className={`loginCard__inputField ${error.username && !username ? "loginCard__inputField--error" : ""}`}
+              className={`loginCard__inputField ${(error.username && !username) || error.general ? "loginCard__inputField--error" : ""}`}
               type="text"
               value={username}
               placeholder="Username"
@@ -96,7 +91,7 @@ function LoginCard() {
               }}
             />{" "}
             <input
-              className={`loginCard__inputField ${error.password && !password ? "loginCard__inputField--error" : ""}`}
+              className={`loginCard__inputField ${(error.password && !password) || error.general ? "loginCard__inputField--error" : ""}`}
               type="password"
               value={password}
               placeholder="Password"

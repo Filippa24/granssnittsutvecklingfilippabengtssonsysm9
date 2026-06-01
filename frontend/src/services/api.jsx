@@ -1,5 +1,5 @@
-  //variabel för url
-  const API_BASE = "http://localhost:5000";
+//variabel för url
+const API_BASE = "http://localhost:5000";
 
 
 function getToken() {
@@ -82,12 +82,11 @@ export async function register({username, password, confirmPassword, email}) {
   });
 }
 
-export async function login({ email, password }) {
-  //AKTIVERA NÄR BACKEND FINNS (ändra i login i authcontext också)
-  // return request("/login", {
-  //   method: "POST",
-  //   body: JSON.stringify({ email, password }),
-  // });
+export async function login({ username, password }) {
+  return request("/users/login", {
+    method: "POST",
+    body: JSON.stringify({ username, password }),
+  });
 }
 
 
@@ -96,4 +95,5 @@ export default {
   getProductById,
   register,
   saveToken,
+  login
 };
