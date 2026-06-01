@@ -10,27 +10,26 @@ const AuthContext = createContext(null);
 //2:
 //provider gör datan i den tillgänglig för alla komponenter som omsluts av  den, ex: <AuthProvider><AuthProvider/>
 export function AuthProvider({ children }) {
-  //stateful variabel för att spara tillståndet på användaren 
+  //stateful variabel för att spara tillståndet på användaren
   //isauthenticated (från api.jsx) returnerar true/false som håller koll på om vi är inloggade eller ej
-  const [authed, setAuthed] = useState(isAuthenticated);
+  const [authed, setAuthed] = useState(isAuthenticated());
 
   async function register(userData) {
-    //BYT TILL RIKTIGT API ANROP NÄR BACKEND FINNS (ändra i register i api.jsx också)
-    // const data = await api.register(userData);
-    // saveToken(data.token);
+    const data = await api.register(userData);
+    api.saveToken(data.accessToken);
     setAuthed(true);
   }
 
-   function login(token) {
-     //BYT TILL RIKTIGT API ANROP NÄR BACKEND FINNS (ändra i login i api.jsx också)
-     api.saveToken(token); //sparar token i localstorage via api.jsx
-     setAuthed(true); //uppdaterar auth tillstånd
-   }
+  function login(token) {
+    //BYT TILL RIKTIGT API ANROP NÄR BACKEND FINNS (ändra i login i api.jsx också)
+    api.saveToken(token); //sparar token i localstorage via api.jsx
+    setAuthed(true); //uppdaterar auth tillstånd
+  }
 
-   function logout() {
-     api.logout(); //tar bort token från localstorage via api.jsx
-     setAuthed(false); //uppdaterar auth tillstånd
-   }
+  function logout() {
+    api.logout(); //tar bort token från localstorage via api.jsx
+    setAuthed(false); //uppdaterar auth tillstånd
+  }
 
   return (
     <AuthContext.Provider value={{ authed, register, login, logout }}>
@@ -44,4 +43,3 @@ export function AuthProvider({ children }) {
 export function useAuth() {
   return useContext(AuthContext);
 }
-

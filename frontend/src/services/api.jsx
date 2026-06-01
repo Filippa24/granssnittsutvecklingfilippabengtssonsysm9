@@ -1,5 +1,5 @@
   //variabel för url
-  const API_BASE = "http://localhost:3001";
+  const API_BASE = "http://localhost:5000";
 
 
 function getToken() {
@@ -57,7 +57,8 @@ async function request(path, options) {
   }
 
   if (!response.ok) {
-    throw new Error("Request failed");
+    //returnera backendens felmeddelande eller:
+    throw new Error(data.message || "Request failed");
   }
   return data;
 }
@@ -75,11 +76,10 @@ export async function getProductById(id){
 }
 
 export async function register({username, password, confirmPassword, email}) {
-  //AKTIVERA NÄR BACKEND FINNS (ändra i register i authcontext också)
-  // return request("/register", {
-  //   method: "POST",
-  //   body: JSON.stringify({ username, password, confirmPassword, email }),
-  // });
+  return request("/users/register", {
+    method: "POST",
+    body: JSON.stringify({ username, password, confirmPassword, email }),
+  });
 }
 
 export async function login({ email, password }) {

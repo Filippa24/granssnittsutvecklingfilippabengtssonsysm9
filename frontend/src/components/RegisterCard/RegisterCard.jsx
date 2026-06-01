@@ -21,7 +21,7 @@ function RegisterCard() {
   const navigate = useNavigate();
 
   //funktion som körs när man trycker på create user knappen
-  function handleRegister() {
+  async function handleRegister() {
     //hämtar nya error från validatemetoden
     const newErrors = validate();
 
@@ -31,7 +31,8 @@ function RegisterCard() {
       return;
     }
     //anropa metoden register (i authcontext) och skapa ett objekt att skicka med med användarens input
-    register({
+    try {
+      await register({
       username,
       password,
       confirmPassword,
@@ -44,7 +45,12 @@ function RegisterCard() {
 
     //navigera till products vid successful register
     navigate("/products");
+  } catch (error) {
+    setError((prev) => ({
+      ...prev, general: error.message
+    }));
   }
+}
 
   function validate() {
     //variabel för att spara nya errors som kan skapas när man skapar en användare. skapar ett objekt eftersom vi vill kunna nå det specifika värdet lättar än om vi skulle haft det i en array och behövt loopa
