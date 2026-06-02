@@ -17,7 +17,7 @@ function ProductDetailsCard() {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+
   //hämta context
   const { addToCart } = useCart();
   //variabel för att spara hämtad productid från urlen
@@ -25,24 +25,27 @@ function ProductDetailsCard() {
   //variabel för att använda navigation
   const navigate = useNavigate();
 
-   //alla produkter hämtas när sidan monteras (tom dependency array)
-   useEffect(() => {
-     //skapa funktionen som hämtar produkterna
-     async function fetchProductById(productId) {
-       try {
-         //hämtar datan från apiets metod getProducts
-         const data = await api.getProductById(productId);
-         //sätter data om det finns eller tom array till products
-         setProduct(data);
-       } catch (err) {
-         setError(err.message);
-       } finally {
-         setLoading(false);
-       }
-     }
-     //anropa funktionen så produkterna visas
-     fetchProductById(productId);
-   }, []);
+  //alla produkter hämtas när sidan monteras (tom dependency array)
+  useEffect(() => {
+    //skapa funktionen som hämtar produkterna
+    async function fetchProductById(productId) {
+      try {
+        //hämtar datan från apiets metod getProducts
+        const response = await api.getProductById(productId);
+
+        // console.log("API RESPONSE:", response);
+
+        //sätter data om det finns eller tom array till products
+        setProduct(response.data || response);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    //anropa funktionen så produkterna visas
+    fetchProductById(productId);
+  }, []);
 
   if (loading) {
     return (
@@ -64,7 +67,7 @@ function ProductDetailsCard() {
       <div className="details__container">
         <h2 className="details__model--mobile">{product.model}</h2>
         <img
-          src={product.images[(1, 2, 3)]}
+          src={product?.images?.[1]}
           alt={product.model}
           className="details__image"
         ></img>
@@ -105,10 +108,13 @@ function ProductDetailsCard() {
           <div className="details__row details__price">
             <p>
               <span className="details__title">PRICE: </span>
-              {product.price.toLocaleString("sv-SE")} SEK
+              {product.price?.toLocaleString("sv-SE")} SEK
             </p>{" "}
             {/*call-back, skicka produkten till addtocart-funktionen (i app.js)*/}
-            <button className="btn__small" onClick={() => addToCart(product)}>
+            <button
+              className="btn__small"
+              onClick={() => product && addToCart(product)}
+            >
               ADD TO CART
             </button>
           </div>

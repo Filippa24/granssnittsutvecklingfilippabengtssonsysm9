@@ -35,7 +35,8 @@ button {
 
   --black: #111010;
   --white: #e6e6e6;
-  --red: #A3111B;
+  --red: #FA051A;
+  /* --red: #A3111B; */
   --grey: #a1a1a1;
 }
 
@@ -56,6 +57,7 @@ body {
 
 .btn__small {
   background: var(--red);
+  color: var(--black);
   width: 11rem;
   height: 1.6rem;
   font-size: var(--fontSize-XXS);

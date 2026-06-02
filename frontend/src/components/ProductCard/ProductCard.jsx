@@ -11,7 +11,7 @@ function ProductCard({product}) {
     return (
       <div
         className="product__container"
-        onClick={() => navigate(`/products/${product.id}`)}
+        onClick={() => navigate(`/products/${product._id}`)}
       >
         <h1
           className={`product__title ${isHovered ? "product__title--hovered" : ""}`}

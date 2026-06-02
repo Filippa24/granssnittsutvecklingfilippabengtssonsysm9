@@ -31,14 +31,14 @@ export function CartProvider({ children }) {
     if (product.stock <= 0) return;
 
     // kontrollera om produkten redan finns i varukorgen
-    const exists = cartItems.find((item) => item.id === product.id);
+    const exists = cartItems.find((item) => item._id === product._id);
 
     //om produkten redan finns vill vi öka antalet av samma produkt, inte lägga till samma produkt en gång till längst ner i listan
     if (exists) {
       setCartItems((prev) =>
         prev.map(
           (item) =>
-            item.id === product.id && item.quantity < product.stock //om detta är sant
+            item._id === product._id && item.quantity < product.stock //om detta är sant
               ? { ...item, quantity: item.quantity + 1 } //gör detta (ändra antalet)
               : item, // annars gör detta, returnera item utan förändring (efetrsom vi loopar genom hela listan med map, ska de items som inte är aktuella lämnas oförändrade)
         ),
@@ -55,7 +55,7 @@ export function CartProvider({ children }) {
         prev
           .map(
             (item) =>
-              item.id === product.id //om detta är sant
+              item._id === product._id //om detta är sant
                 ? { ...item, quantity: item.quantity - 1 } //gör detta (ändra antalet)
                 : item, // annars gör detta, returnera item utan förändring (efetrsom vi loopar genom hela listan med map, ska de items som inte är aktuella lämnas oförändrade)
           )
@@ -67,7 +67,7 @@ export function CartProvider({ children }) {
   function discardCartItem(product) {
     //uppdatera listan genom att skapa en ny version (filter) av originallistan men utan produkten vi tar bort
     //                        behåll item om dess id inte matchar produkten som ska tas bort
-    setCartItems((prev) => prev.filter((item) => item.id !== product.id));
+    setCartItems((prev) => prev.filter((item) => item._id !== product._id));
   }
 
   //tömmer varukorgen, anropas i metoden nedan
@@ -77,16 +77,15 @@ export function CartProvider({ children }) {
 
   //funktion för att lägga en order, ta emot inputen som användaren skrivit i inputfälten
   function placeOrder(customerInfo) {
-
     //generera ett random ordernummer, siffror och bokstäver, att använda när vi skapar order
     const orderNumber = Math.random()
       .toString(36) //konverterar ett random tal till base36 (innehåller 0-9 och a-z),
       .substring(2, 6) //blir 4 tecken långt
       .toUpperCase(); //gör till stora bokstäver
 
-      //generera leveransdatum 5 dagar efter ordern är lagd
-const deliveryDate = new Date();
-deliveryDate.setDate(deliveryDate.getDate() + 5);
+    //generera leveransdatum 5 dagar efter ordern är lagd
+    const deliveryDate = new Date();
+    deliveryDate.setDate(deliveryDate.getDate() + 5);
 
     /*skapar nytt objekt som innehåller ordernummer, produkterna, kundens info och datum för beställningen*/
     const newOrder = {
@@ -115,7 +114,7 @@ deliveryDate.setDate(deliveryDate.getDate() + 5);
         discardCartItem,
         clearCart,
         placeOrder,
-        order
+        order,
       }}
     >
       {children}

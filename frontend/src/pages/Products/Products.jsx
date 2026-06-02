@@ -61,7 +61,7 @@ function Products() {
           <div className="products__list">
             {/* mappar filteredproducts ist för bara products eftersom filteredproducts kan returnera både filtrerade produkter eller produkter beroende på situation, products kunde bara returnera alla products utan filter*/}
             {filteredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} /> //skicka hela product-objektet i en variabel som heter product
+              <ProductCard key={product._id} product={product} /> //skicka hela product-objektet i en variabel som heter product
             ))}
           </div>
           {/* när man väljer li i filtret (onSelectMake), sätts setSelectedMake. detta görs via filtercard */}

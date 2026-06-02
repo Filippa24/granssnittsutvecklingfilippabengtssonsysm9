@@ -21,7 +21,7 @@ function ConfirmationCard() {
             <div className="confirmation__productDetails">
               {" "}
               <CartProductCard
-                key={product.id}
+                key={product._id}
                 product={product}
                 //döljer knapparna från original cartproductcard så jag kan återanävnda den här
                 showButtons={false}

@@ -1,7 +1,6 @@
 //variabel för url
 const API_BASE = "http://localhost:5000";
 
-
 function getToken() {
   return localStorage.getItem("token");
 }
@@ -16,8 +15,8 @@ export function isAuthenticated() {
   return !!getToken();
 }
 
-  //generell request funktion som vi kan återanvända, använder den vid varje request
-  //ta emot 2 saker, pathen och vilken typ av metod det är post/delete osv, men det läggs som options
+//generell request funktion som vi kan återanvända, använder den vid varje request
+//ta emot 2 saker, pathen och vilken typ av metod det är post/delete osv, men det läggs som options
 async function request(path, options) {
   //1 hämta headers från options om de finns annars skapa tomt objekt
   const headers = options.headers || {};
@@ -64,18 +63,18 @@ async function request(path, options) {
 }
 
 export async function getProducts() {
-  return request("/motorcycles", {
+  return request("/products", {
     method: "GET",
   });
 }
 
-export async function getProductById(id){
-  return request(`/motorcycles/${id}`, {
+export async function getProductById(id) {
+  return request(`/products/${id}`, {
     method: "GET",
-  })
+  });
 }
 
-export async function register({username, password, confirmPassword, email}) {
+export async function register({ username, password, confirmPassword, email }) {
   return request("/users/register", {
     method: "POST",
     body: JSON.stringify({ username, password, confirmPassword, email }),
@@ -89,11 +88,10 @@ export async function login({ username, password }) {
   });
 }
 
-
 export default {
   getProducts,
   getProductById,
   register,
   saveToken,
-  login
+  login,
 };

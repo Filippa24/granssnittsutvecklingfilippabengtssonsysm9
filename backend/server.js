@@ -12,6 +12,7 @@ const cors = require("cors");
 const userRoutes = require("./routes/userRoutes");
 const connectDB = require("./config/dbConnection");
 const errorHandler = require("./middleware/errorHandler");
+const motorcycleRoutes = require("./routes/motorcycleRoutes");
 
 //anropa
 connectDB();
@@ -32,6 +33,7 @@ app.use(express.json());
 //routes anropas här (måste först importera högre upp)
 //denna används i userroutes
 app.use("/users", userRoutes);
+app.use("/products", motorcycleRoutes);
 
 //test
 // app.get("/motorcycles", (req, res) => {

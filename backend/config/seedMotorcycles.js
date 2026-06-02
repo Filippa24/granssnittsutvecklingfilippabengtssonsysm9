@@ -1,0 +1,191 @@
+const mongoose = require("mongoose");
+const Motorcycle = require("../models/motorcycleModel");
+require("dotenv").config();
+
+const motorcycles = [
+  {
+    model: "YZF-R6",
+    make: "Yamaha",
+    type: "Sport",
+    year: 2020,
+    hp: 120,
+    about:
+      "Yamaha YZF-R6 combines race-focused engineering with aggressive styling and razor-sharp handling. Powered by a high-revving 599cc inline-four engine producing around 120 horsepower, it delivers explosive top-end performance, precise cornering, and track-inspired technology for an exhilarating supersport experience on both road and circuit.",
+    price: 150000,
+    stock: 1,
+    images: [
+      "/Media/media.productList/productList.1.jpg",
+      "/Media/media.productDetails/r63.jpg",
+      "/Media/media.productDetails/r61.jpg",
+      "/Media/media.productDetails/r62.jpg",
+    ],
+  },
+  {
+    model: "RSV4 Factory",
+    make: "Aprilia",
+    type: "Sport",
+    year: 2022,
+    hp: 220,
+    about:
+      "Aprilia RSV4 Factory blends MotoGP-derived aerodynamics with extreme V4 performance and precision Italian engineering. Powered by a ferocious 1100cc V4 engine producing over 200 horsepower, it delivers explosive acceleration, razor-sharp handling, and advanced electronics for an uncompromising superbike experience on both road and track.",
+    price: 309000,
+    stock: 5,
+    images: [
+      "/Media/media.productList/productList.2.jpg",
+      "/Media/media.productDetails/aprilia2.jpg",
+      "/Media/media.productDetails/aprilia3.jpg",
+      "/Media/media.productDetails/aprilia1.jpg",
+    ],
+  },
+  {
+    model: "M1000RR",
+    make: "BMW",
+    type: "Sport",
+    year: 2024,
+    hp: 218,
+    about:
+      "BMW M 1000 RR combines World Superbike-inspired engineering with cutting-edge aerodynamics and extreme high-performance precision. Powered by a ferocious 999cc inline-four engine producing 218 horsepower, it delivers explosive acceleration, advanced rider electronics, and razor-sharp handling for an uncompromising superbike experience on both road and track.",
+    price: 380000,
+    stock: 4,
+    images: [
+      "/Media/media.productList/productList.3.jpg",
+      "/Media/media.productDetails/bmw1.jpg",
+      "/Media/media.productDetails/bmw3.jpg",
+      "/Media/media.productDetails/bmw2.jpg",
+    ],
+  },
+  {
+    model: "S1000RR",
+    make: "BMW",
+    type: "Sport",
+    year: 2017,
+    hp: 199,
+    about:
+      "BMW S1000RR combines race-inspired engineering with cutting-edge electronics and explosive superbike performance. Powered by a high-revving 999cc inline-four engine producing 199 horsepower, it delivers brutal acceleration, razor-sharp handling, and advanced rider technology for an exhilarating riding experience on both road and track.",
+    price: 200000,
+    stock: 3,
+    images: [
+      "/Media/media.productList/productList.4.jpg",
+      "/Media/media.productDetails/s1k1.jpg",
+      "/Media/media.productDetails/s1k3.jpg",
+      "/Media/media.productDetails/s1k2.jpg",
+    ],
+  },
+  {
+    model: "Panigale V4",
+    make: "Ducati",
+    type: "Sport",
+    year: 2025,
+    hp: 215,
+    about:
+      "The Ducati Panigale V4 combines MotoGP-inspired performance with cutting-edge Italian design. Powered by a high-revving V4 engine delivering over 200 horsepower, it offers breathtaking acceleration, razor-sharp handling, and advanced rider technology for an unmatched superbike experience on both road and track.",
+    price: 305000,
+    stock: 5,
+    images: [
+      "/Media/media.productList/productList.5.jpg",
+      "/Media/media.productDetails/ducati21.jpg",
+      "/Media/media.productDetails/ducati22.jpg",
+      "/Media/media.productDetails/ducati23.jpg",
+    ],
+  },
+  {
+    model: "CBR1000RR-R Fireblade SP",
+    make: "Honda",
+    type: "Sport",
+    year: 2024,
+    hp: 217,
+    about:
+      "Honda CBR1000RR-R Fireblade SP combines MotoGP-derived engineering with razor-sharp aerodynamics and precision superbike performance. Powered by a high-revving 999cc inline-four engine producing over 217 horsepower, it delivers explosive acceleration, advanced electronic control systems, and track-focused handling for an uncompromising riding experience on both road and circuit.",
+    price: 336000,
+    stock: 2,
+    images: [
+      "/Media/media.productList/productList.6.jpg",
+      "/Media/media.productDetails/fireblade2.jpg",
+      "/Media/media.productDetails/fireblade3.jpg",
+      "/Media/media.productDetails/fireblade1.jpg",
+    ],
+  },
+  {
+    model: "Ninja H2",
+    make: "Kawasaki",
+    type: "Sport",
+    year: "2018",
+    hp: 315,
+    about:
+      "Kawasaki Ninja H2 is a hyperbike that combines supercharged engineering with extreme aerodynamic design and cutting-edge electronics. Powered by a 998cc supercharged inline-four producing over 230 horsepower, it delivers brutal acceleration, unmatched straight-line speed, and advanced stability systems for a truly unique high-performance riding experience.",
+    price: 320000,
+    stock: 2,
+    images: [
+      "/Media/media.productList/productList.7.jpg",
+      "/Media/media.productDetails/h21.jpg",
+      "/Media/media.productDetails/h23.jpg",
+      "/Media/media.productDetails/h22.jpg",
+    ],
+  },
+  {
+    model: "1290 Superduke R",
+    make: "KTM",
+    type: "Naked",
+    year: "2023",
+    hp: 180,
+    about:
+      "KTM 1290 Super Duke R is an extreme hyper naked motorcycle that blends superbike-level performance with raw streetfighter character. Powered by a 1301cc V-twin engine producing around 180 horsepower, it delivers brutal acceleration, massive torque, and sharp handling combined with advanced electronics for a thrilling and uncompromising riding experience on both road and track.",
+    price: 219000,
+    stock: 8,
+    images: [
+      "/Media/media.productList/productList.8.jpg",
+      "/Media/media.productDetails/ktm1.jpg",
+      "/Media/media.productDetails/ktm2.jpg",
+      "/Media/media.productDetails/ktm3.jpg",
+    ],
+  },
+  {
+    model: "YZF-R1",
+    make: "Yamaha",
+    type: "Sport",
+    year: "2023",
+    hp: 200,
+    about:
+      "Yamaha YZF-R1 is a high-performance superbike inspired by MotoGP technology, combining aggressive aerodynamics with a high-revving 998cc crossplane engine producing around 200 horsepower. It delivers razor-sharp handling, advanced electronics, and explosive acceleration for a race-focused riding experience on both road and track.",
+    price: 240000,
+    stock: 10,
+    images: [
+      "/Media/media.productList/productList.9.jpg",
+      "/Media/media.productDetails/r12.jpg",
+      "/Media/media.productDetails/r13.jpg",
+      "/Media/media.productDetails/r11.jpg",
+    ],
+  },
+  {
+    model: "YZF-R7",
+    make: "Yamaha",
+    type: "Sport",
+    year: "2023",
+    hp: 73,
+    about:
+      "Yamaha YZF-R7 is a lightweight supersport motorcycle that combines everyday usability with track-inspired performance. Powered by a 689cc CP2 parallel-twin engine producing around 73 horsepower, it delivers smooth torque, agile handling, and modern electronics for a balanced and accessible riding experience on both road and track.",
+    price: 110000,
+    stock: 10,
+    images: [
+      "/Media/media.productList/productList.10.jpg",
+      "/Media/media.productDetails/r72.jpg",
+      "/Media/media.productDetails/r71.jpg",
+      "/Media/media.productDetails/r73.jpg",
+    ],
+  },
+];
+
+const seed = async () => {
+  try {
+    await mongoose.connect(process.env.CONNECTION_STRING);
+    await Motorcycle.deleteMany();
+    await Motorcycle.insertMany(motorcycles);
+    console.log("Motorcycles seeded successfully.");
+    process.exit();
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+};
+
+seed();
