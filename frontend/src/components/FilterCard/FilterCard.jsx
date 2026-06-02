@@ -1,6 +1,7 @@
 import UseFetch from "../../hooks/useFetch";
 import { useState } from "react";
 import "./FilterCard.css";
+import { useFavorites } from "../../contexts/FavoritesContext";
 
 function FilterCard({ onSelectMake, selectedMake }) {
   const [showFilter, setShowFilter] = useState(false);
@@ -9,6 +10,7 @@ function FilterCard({ onSelectMake, selectedMake }) {
   const url = "http://localhost:5000/products";
 
   const { data: products, loading, error } = UseFetch(url);
+  const { favorites } = useFavorites();
 
   if (loading) return <p>Loading filter.</p>;
   if (error) return <p>Error loading filter.</p>;
@@ -35,6 +37,16 @@ function FilterCard({ onSelectMake, selectedMake }) {
             }} // null = visa alla
           >
             Show all
+          </li>
+{/* visa bara favoriter: */}
+          <li
+            className="filter__li"
+            onClick={() => {
+              onSelectMake("favorites");
+              setShowFilter(false);
+            }}
+          >
+            Favorites ({favorites.length})
           </li>
 
           {/* plocka ut bara make via map, make läggs i en ny array som direkt skickas in i new set där dubletter tas bort, sen sprids de ut i en ny array, sorteras och skrivs ut */}

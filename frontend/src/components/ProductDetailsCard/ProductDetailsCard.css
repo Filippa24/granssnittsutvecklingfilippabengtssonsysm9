@@ -55,6 +55,30 @@
   display: none;
 }
 
+.star--active path:last-child {
+  fill: var(--red) !important;
+}
+
+.star--inactive path:last-child {
+  fill: var(--grey) !important;
+}
+
+.star {
+  position: fixed;
+  top: 4rem;
+  right: 1rem;
+  z-index: 200;
+}
+
+.favorites__btn {
+display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px; /*användarvänlighet*/
+  height: 44px; /*användarvänlighet*/
+  cursor: pointer;
+}
+
 @media (min-width: 500px) {
   .details__image {
     max-width: 80%;

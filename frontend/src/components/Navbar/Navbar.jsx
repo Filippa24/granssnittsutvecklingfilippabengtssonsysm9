@@ -11,17 +11,6 @@ function Navbar() {
   return (
     // om isdark är true får navbar även klassen navbar--dark. men om isdark är false är navbar bara navbar, ingen css ändras
     <section className={`navbar ${isDark ? "navbar--dark" : ""}`}>
-      {/* <div className="navbar__mobile--container">
-        <Link to="/">
-          <h4 className="navbar__mobile--text">Home</h4>
-        </Link>
-        <Link to="/products">
-          <h4 className="navbar__mobile--text">Products</h4>
-        </Link>
-        <Link to="/cart">
-          <h4 className="navbar__mobile--text">Cart</h4>
-        </Link>
-      </div> */}
       <div className="navbar__container">
         <Link to="/">
           <h4 className="navbar__text">Home</h4>

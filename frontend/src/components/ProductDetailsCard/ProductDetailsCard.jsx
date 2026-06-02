@@ -5,6 +5,8 @@ import "./ProductDetailsCard.css";
 import { useCart } from "../../contexts/CartContext";
 import api from "../../services/api";
 import React, { useState, useEffect } from "react";
+import { FaStar } from "react-icons/fa6";
+import { useFavorites } from "../../contexts/FavoritesContext";
 
 //ikoner från react icons:
 import { MdClose } from "react-icons/md";
@@ -20,6 +22,7 @@ function ProductDetailsCard() {
 
   //hämta context
   const { addToCart } = useCart();
+  const { addFavorite, removeFavorite, isFavorite } = useFavorites();
   //variabel för att spara hämtad productid från urlen
   const { productId } = useParams();
   //variabel för att använda navigation
@@ -66,13 +69,26 @@ function ProductDetailsCard() {
       </button>
       <div className="details__container">
         <h2 className="details__model--mobile">{product.model}</h2>
+
         <img
           src={product?.images?.[1]}
           alt={product.model}
           className="details__image"
         ></img>
+
         <div className="details__text--content">
           <h2 className="details__model--desktop">{product.model}</h2>
+
+          <button
+            className={`favorites__btn star ${isFavorite(product) ? "star--active" : "star--inactive"}`}
+            onClick={() =>
+              product && isFavorite(product)
+                ? removeFavorite(product)
+                : addFavorite(product)
+            }
+          >
+            <FaStar className="icon__close icon" />
+          </button>
           <div className="details__container--text">
             <div className="details__row">
               <p>

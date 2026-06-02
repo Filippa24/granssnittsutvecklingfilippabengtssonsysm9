@@ -4,6 +4,7 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 import FilterCard from "../../components/FilterCard/FilterCard";
 import "./Products.css";
 import Footer from "../../components/Footer/Footer";
+import { useFavorites } from "../../contexts/FavoritesContext";
 
 function Products() {
   //stateful variabler:
@@ -12,6 +13,8 @@ function Products() {
   const [error, setError] = useState(null);
   //variabel för vilket li man väljer i filter drop down
   const [selectedMake, setSelectedMake] = useState(null);
+
+  const { favorites } = useFavorites();
 
   //alla produkter hämtas när sidan monteras (tom dependency array)
   useEffect(() => {
@@ -32,11 +35,13 @@ function Products() {
     fetchProducts();
   }, []);
 
-  //filtrera produkter baserat på make (filter drop down)
-  //om selectedMake är true visas de filtrerade produkterna annars visas alla produkter. värdena sparas i filteredProducts
-  const filteredProducts = selectedMake
-    ? products.filter((p) => p.make === selectedMake)
-    : products;
+  //filtrera produkter baserat på make eller favorites (filter drop down)
+  const filteredProducts =
+    selectedMake === "favorites"
+      ? products.filter((p) => favorites.some((f) => f._id === p._id))
+      : selectedMake
+        ? products.filter((p) => p.make === selectedMake)
+        : products;
 
   console.log("products:", products);
   console.log("loading:", loading);
@@ -60,9 +65,13 @@ function Products() {
         <div className="products__layout">
           <div className="products__list">
             {/* mappar filteredproducts ist för bara products eftersom filteredproducts kan returnera både filtrerade produkter eller produkter beroende på situation, products kunde bara returnera alla products utan filter*/}
-            {filteredProducts.map((product) => (
-              <ProductCard key={product._id} product={product} /> //skicka hela product-objektet i en variabel som heter product
-            ))}
+            {filteredProducts.length === 0 && selectedMake === "favorites" ? (
+              <p>No favorites added yet.</p>
+            ) : (
+              filteredProducts.map((product) => (
+                <ProductCard key={product._id} product={product} /> //skicka hela product-objektet i en variabel som heter product
+              ))
+            )}
           </div>
           {/* när man väljer li i filtret (onSelectMake), sätts setSelectedMake. detta görs via filtercard */}
           <FilterCard
@@ -71,7 +80,7 @@ function Products() {
           />
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </section>
   );
 }
