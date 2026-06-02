@@ -29,6 +29,9 @@ const validateToken = asyncHandler(async (req, res, next) => {
       req.user = decoded.user;
       next();
     });
+  } else {
+    res.status(401);
+    throw new Error("Not authorized, no token");
   }
 });
 //verifiera token med access_token_secret i .env

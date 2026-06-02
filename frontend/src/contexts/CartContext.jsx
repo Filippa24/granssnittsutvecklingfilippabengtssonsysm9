@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { createOrder, isAuthenticated } from "../services/api";
 
 //context är till för state hantering. cartContext hanterar all state gällande cart och vi väljer var vi vill att det ska gälla (hela appen)
 //skapa contexten (3 steg)
@@ -19,6 +20,7 @@ export function CartProvider({ children }) {
 
   //stateful variabel för att lagra den lagda ordern. null räcker här för att endast visa den senaste orderna men om vi vill spara flera ordrar som historik används tom array []
   const [order, setOrder] = useState(null);
+  const [orderError, setOrderError] = useState(null);
 
   //spara i localStorage varje gång cartItems ändras
   useEffect(() => {
@@ -75,34 +77,45 @@ export function CartProvider({ children }) {
     setCartItems([]);
   }
 
+  //detta är den enda funktionen av dessa i cartcontext som behöver fortsätta ner till backend. en användare kan justera innehållet i sin kundkorg och det är bara state som ändras men när ordern läggs ska den läggas i databasen
   //funktion för att lägga en order, ta emot inputen som användaren skrivit i inputfälten
-  function placeOrder(customerInfo) {
-    //generera ett random ordernummer, siffror och bokstäver, att använda när vi skapar order
-    const orderNumber = Math.random()
-      .toString(36) //konverterar ett random tal till base36 (innehåller 0-9 och a-z),
-      .substring(2, 6) //blir 4 tecken långt
-      .toUpperCase(); //gör till stora bokstäver
+  async function placeOrder(customerInfo) {
+    try {
+      //generera ett random ordernummer, siffror och bokstäver, att använda när vi skapar order
+      const orderNumber = Math.random()
+        .toString(36) //konverterar ett random tal till base36 (innehåller 0-9 och a-z),
+        .substring(2, 6) //blir 4 tecken långt
+        .toUpperCase(); //gör till stora bokstäver
 
-    //generera leveransdatum 5 dagar efter ordern är lagd
-    const deliveryDate = new Date();
-    deliveryDate.setDate(deliveryDate.getDate() + 5);
+      //generera leveransdatum 5 dagar efter ordern är lagd
+      const deliveryDate = new Date();
+      deliveryDate.setDate(deliveryDate.getDate() + 5);
 
-    /*skapar nytt objekt som innehåller ordernummer, produkterna, kundens info och datum för beställningen*/
-    const newOrder = {
-      orderNumber,
-      items: cartItems,
-      customer: customerInfo /**/,
-      date: new Date().toLocaleDateString(),
-      deliveryDate: deliveryDate.toLocaleDateString(),
-    };
+      /*skapar nytt objekt som innehåller ordernummer, produkterna, kundens info och datum för beställningen*/
+      const newOrder = {
+        orderNumber,
+        items: cartItems,
+        customer: customerInfo /**/,
+        date: new Date().toLocaleDateString(),
+        deliveryDate: deliveryDate.toLocaleDateString(),
+      };
 
-    //sätter neworder till order
-    setOrder(newOrder);
+      //spara ordern lokalt oavsett om man är inloggad eller ej, för att kunna visa upp i confirmation page
+      setOrder(newOrder);
+      setOrderError(null);
 
-    //för att kunna se att ordern gick genom i devtools
-    console.log("Order went through successfully,", newOrder);
+      //om inloggad skicka ordern till backenden
+      if (isAuthenticated()) {
+        await createOrder(newOrder);
+      }
 
-    //tömmer cart i confirmation.jsx för att låta tillståndet fortsätta in dit
+      //för att kunna se att ordern gick genom i devtools
+      console.log("Order went through successfully,", newOrder);
+
+      //tömmer cart i confirmation.jsx för att låta tillståndet fortsätta in dit
+    } catch (error) {
+      setOrderError(error.message);
+    }
   }
 
   return (
@@ -115,6 +128,7 @@ export function CartProvider({ children }) {
         clearCart,
         placeOrder,
         order,
+        orderError,
       }}
     >
       {children}

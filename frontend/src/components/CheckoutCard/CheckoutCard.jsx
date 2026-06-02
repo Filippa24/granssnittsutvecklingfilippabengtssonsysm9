@@ -16,11 +16,11 @@ function CheckoutCard() {
     email: "",
     address: "",
   });
-  const { placeOrder } = useCart();
+  const { placeOrder, orderError } = useCart();
   const navigate = useNavigate();
 
   //funktion som körs när man trycker på någon av PAY knapparna
-  function handlePayment() {
+  async function handlePayment() {
     //hämtar nya error från validatemetoden
     const newErrors = validate();
 
@@ -30,7 +30,7 @@ function CheckoutCard() {
       return;
     }
     //anropa metoden placeorder (i cartcontext) och skapa ett objekt att skicka med. Skapar ordern med produkterna i cartitems, kundens info och datum
-    placeOrder({
+    await placeOrder({
       firstName,
       lastName,
       email,
@@ -42,7 +42,9 @@ function CheckoutCard() {
     clearInput();
 
     //skicka ett state objekt som säger att vi kommer från checkout page
-    navigate("/confirmation", { state: { fromCheckout: true } });
+    if (!orderError) {
+      navigate("/confirmation", { state: { fromCheckout: true } });
+    }
   }
 
   function validate() {

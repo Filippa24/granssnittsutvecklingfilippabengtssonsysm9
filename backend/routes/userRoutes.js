@@ -6,6 +6,7 @@ const {
   registerUser,
   loginUser,
   currentUser,
+  getCurrentUser
 } = require("../controllers/userController");
 
 //hämta validerad token från validateTokenHandler
@@ -17,5 +18,6 @@ const router = express.Router();
 //post - register
 router.post("/register", registerUser);
 router.post("/login", loginUser);
+router.get("/me", validateToken, getCurrentUser);
 
 module.exports = router;

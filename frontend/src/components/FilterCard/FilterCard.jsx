@@ -6,7 +6,7 @@ function FilterCard({ onSelectMake, selectedMake }) {
   const [showFilter, setShowFilter] = useState(false);
 
   //variabel för url
-  const url = "http://localhost:3001/motorcycles";
+  const url = "http://localhost:5000/products";
 
   const { data: products, loading, error } = UseFetch(url);
 
@@ -30,9 +30,9 @@ function FilterCard({ onSelectMake, selectedMake }) {
           <li
             className="filter__li"
             onClick={() => {
-                onSelectMake(null);
-            setShowFilter(false);
-        }} // null = visa alla
+              onSelectMake(null);
+              setShowFilter(false);
+            }} // null = visa alla
           >
             Show all
           </li>
@@ -44,9 +44,9 @@ function FilterCard({ onSelectMake, selectedMake }) {
               key={make}
               className="filter__li"
               onClick={() => {
-                onSelectMake(make); 
+                onSelectMake(make);
                 setShowFilter(false);
-            }}
+              }}
             >
               {make}
             </li>

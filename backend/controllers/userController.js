@@ -111,5 +111,20 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
+//@desc get current user
+//@route GET /users/me
+//@access private //kan endast nås av en person, den inloggade
+ const getCurrentUser = asyncHandler(async (req, res) => {
+   //req.user sätts i validateTokenHandler. hela user returneras men vi vill inte ta emot password så vi tar bort det fältet
+   const user = await User.findById(req.user.id).select("-password");
+
+   if (!user) {
+     res.status(404);
+     throw new Error("User not found.");
+   }
+
+   res.status(200).json(user);
+ });
+
 //exportera funktionerna så vi kan nå de i routes
-module.exports = { registerUser, loginUser };
+module.exports = { registerUser, loginUser, getCurrentUser };

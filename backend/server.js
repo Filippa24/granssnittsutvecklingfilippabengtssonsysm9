@@ -13,6 +13,7 @@ const userRoutes = require("./routes/userRoutes");
 const connectDB = require("./config/dbConnection");
 const errorHandler = require("./middleware/errorHandler");
 const motorcycleRoutes = require("./routes/motorcycleRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 
 //anropa
 connectDB();
@@ -34,6 +35,7 @@ app.use(express.json());
 //denna används i userroutes
 app.use("/users", userRoutes);
 app.use("/products", motorcycleRoutes);
+app.use("/orders", orderRoutes);
 
 //test
 // app.get("/motorcycles", (req, res) => {

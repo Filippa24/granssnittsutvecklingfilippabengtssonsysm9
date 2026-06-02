@@ -88,10 +88,32 @@ export async function login({ username, password }) {
   });
 }
 
+export async function getCurrentUser() {
+  return request("/users/me", {
+    method: "GET",
+  });
+}
+
+export async function getOrderByUser(userId) {
+  return request(`/orders/user/${userId}`, {
+    method: "GET",
+  });
+}
+
+export async function createOrder(orderData) {
+  return request("/orders", {
+    method: "POST",
+    body: JSON.stringify(orderData),
+  });
+}
+
 export default {
   getProducts,
   getProductById,
   register,
   saveToken,
   login,
+  getCurrentUser,
+  getOrderByUser,
+  createOrder,
 };
