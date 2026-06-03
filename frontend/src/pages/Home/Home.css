@@ -40,12 +40,6 @@
   width: 80%;
 }
 
-/* .hero__mobile-text {
-  color: var(--red);
-  font-size: var(--fontSize-XS);
-  text-shadow: var(--shadow);
-} */
-
 /* för att slippa se den vita blinkningen när man går från home till andra komponenter: */
 .loading__background {
   background: var(--black);
@@ -66,6 +60,6 @@
 }
 @media (min-width: 1050px) {
   .hero__title {
-    font-size: clamp(3.5rem, 8vw, 20rem);
+    font-size: clamp(3.5rem, 7vw, 20rem);
   }
 }

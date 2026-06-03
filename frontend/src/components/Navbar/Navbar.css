@@ -1,5 +1,5 @@
 .navbar {
-  background: transparent;
+  background: var(--black);
   position: fixed;
   top: 0;
   left: 0;
@@ -11,6 +11,10 @@
 
 .navbar--dark {
   background: var(--black);
+}
+
+.navbar__mobile--container {
+  display: flex;
 }
 
 .navbar__container {
@@ -51,12 +55,14 @@ a {
     display: flex;
     flex-direction: column;
     margin-left: 2vw;
+  background: transparent;
   }
   .navbar {
     display: flex;
     align-items: center;
     width: 200px;
     height: 100vh;
+  background: transparent;
   }
   .navbar--dark {
     background: transparent;

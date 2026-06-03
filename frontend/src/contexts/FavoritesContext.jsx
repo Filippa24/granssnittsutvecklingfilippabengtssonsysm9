@@ -30,9 +30,14 @@ export function FavoriteProvider({ children }) {
     return favorites.some((item) => item._id === product._id);
   }
 
+  //funktion för att rensa favoriter när man går från inte inloggad till inloggad och ev blir en annan användare så återställs favoriterna
+function clearFavorites() {
+  setFavorites([]);
+}
+
   return (
     <FavoriteContext.Provider
-      value={{ favorites, addFavorite, removeFavorite, isFavorite }}
+      value={{ favorites, addFavorite, removeFavorite, isFavorite, clearFavorites }}
     >
       {children}
     </FavoriteContext.Provider>

@@ -24,9 +24,6 @@ const navigate = useNavigate();
   return (
     <div className="confirmation__background">
       <ConfirmationCard />
-      <Link to="/">
-        <h4 className="link__home">Home</h4>
-      </Link>
       <Footer />
     </div>
   );

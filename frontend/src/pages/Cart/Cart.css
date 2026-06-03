@@ -10,8 +10,9 @@ flex-direction: column;
 
 .cart__title {
   position: fixed;
+   top: 80px;
   z-index: 100;
-  height: 120px;
+  height: 70px;
   width: 100%;
   padding-bottom: 20px;
   display: flex;
@@ -22,7 +23,7 @@ flex-direction: column;
 }
 
 .cart__productList {
-  padding-top: 120px;
+  padding-top: 150px;
   padding-bottom: 30px;
 }
 
@@ -45,6 +46,11 @@ flex-direction: column;
 .cart__checkout span{
   font-size: var(--fontSize-S);
 }
+
+ .cart__title {
+    top: 0;
+    height: 120px;
+ }
 
 .cart__productList {
   padding-top: 180px;

@@ -13,19 +13,3 @@
   justify-content: center;
   animation: fadein 0.2s ease-in;
 }
-
-.link__home {
-padding: 1rem;
-  color: var(--red);
-  font-size: var(--fontSize-XS);
-  text-shadow: var(--shadow);
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  z-index: 200;
-}
-
-.link__home:hover {
-  color: var(--grey);
-  cursor: pointer;
-}

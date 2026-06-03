@@ -1,5 +1,6 @@
 import React, { useState, createContext, useContext } from "react";
 import api, { isAuthenticated } from "../services/api";
+import { useFavorites } from "./FavoritesContext";
 
 //context är till för state hantering. AuthContext hanterar all state gällande om en användare är inloggad eller inte och vi väljer var vi vill att det ska gälla (hela appen)
 //skapa contexten (3 steg)
@@ -14,6 +15,8 @@ export function AuthProvider({ children }) {
   //isauthenticated (från api.jsx) returnerar true/false som håller koll på om vi är inloggade eller ej
   const [authed, setAuthed] = useState(isAuthenticated());
 
+const { clearFavorites } = useFavorites();
+
   async function register(userData) {
     const data = await api.register(userData);
     api.saveToken(data.accessToken);
@@ -23,6 +26,7 @@ export function AuthProvider({ children }) {
   async function login(token) {
     api.saveToken(token); //sparar token i localstorage via api.jsx
     setAuthed(true); //uppdaterar auth tillstånd
+    clearFavorites(); //nollställ favoriter vid inlogg via favoritescontext
   }
 
   function logout() {
