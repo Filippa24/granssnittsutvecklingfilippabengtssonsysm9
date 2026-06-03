@@ -35,9 +35,8 @@ button {
 
   --black: #111010;
   --white: #e6e6e6;
-  --red: #FA051A;
-  /* --red: #A3111B; */
-  --grey: #a1a1a1;
+  --red: #fa051a;
+  --grey: #d4d4d4;
 }
 
 #root {
@@ -72,12 +71,12 @@ body {
 /*när knappen är disabled*/
 .btn__small:disabled {
   opacity: 0.5;
-  cursor: default; 
+  cursor: default;
 }
 
 /*ingen hover effekt när knappen är disabled, behåller standardfärger ist för ändra färg när man hover*/
 .btn__small:disabled:hover {
-  background: var(--red); 
+  background: var(--red);
   color: inherit;
 }
 

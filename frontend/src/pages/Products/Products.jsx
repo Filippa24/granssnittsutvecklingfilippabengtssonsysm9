@@ -66,7 +66,7 @@ function Products() {
           <div className="products__list">
             {/* mappar filteredproducts ist för bara products eftersom filteredproducts kan returnera både filtrerade produkter eller produkter beroende på situation, products kunde bara returnera alla products utan filter*/}
             {filteredProducts.length === 0 && selectedMake === "favorites" ? (
-              <p>No favorites added yet.</p>
+              <p className="noFavorites__text">No favorites added yet.</p>
             ) : (
               filteredProducts.map((product) => (
                 <ProductCard key={product._id} product={product} /> //skicka hela product-objektet i en variabel som heter product

@@ -26,6 +26,10 @@
   padding-bottom: 60px;
 }
 
+.noFavorites__text {
+  padding-top: 5rem;
+}
+
 @media (min-width: 500px) {
   .products__list {
     display: grid;

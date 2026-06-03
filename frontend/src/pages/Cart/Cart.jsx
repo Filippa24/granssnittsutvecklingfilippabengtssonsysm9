@@ -41,7 +41,7 @@ function Cart() {
         <button
           className="btn__small"
           //när man klickar på checkout-knappen navigerar vi till checkout och vi skickar med ett objekt som säger att vi kommer från cart
-          //på så sätt vet sen checkout att vi "får" vara på den pagen (se checkout.jsx)
+          //router guards: på så sätt vet sen checkout att vi "får" vara på den pagen (se checkout.jsx)
           onClick={() => navigate("/checkout", { state: { fromCart: true } })}
           //knappen är disabled om det inte finns några varor i korgen
           disabled={cartItems.length === 0}
