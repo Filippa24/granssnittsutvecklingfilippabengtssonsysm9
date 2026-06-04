@@ -6,7 +6,8 @@ function Navbar() {
   //uselocation för att kontrollera att vi är på url /products, eftersom då ska vi använda navbaren med mörk bakgrund ist för transparent
 
   const location = useLocation();
-  const isDark = location.pathname === "/products";
+  const isDark =
+    location.pathname === "/products" || location.pathname === "/cart";
  
   return (
     // om isdark är true får navbar även klassen navbar--dark. men om isdark är false är navbar bara navbar, ingen css ändras

@@ -1,5 +1,5 @@
 .navbar {
-  background: var(--black);
+  background: transparent;
   position: fixed;
   top: 0;
   left: 0;
@@ -38,10 +38,6 @@
   cursor: pointer;
 }
 
-/* .navbar__container {
-  display: none;
-} */
-
 /* link, fast i css heter det ändå a: */
 a {
   text-decoration: none;
@@ -55,14 +51,14 @@ a {
     display: flex;
     flex-direction: column;
     margin-left: 2vw;
-  background: transparent;
+    background: transparent;
   }
   .navbar {
     display: flex;
     align-items: center;
     width: 200px;
     height: 100vh;
-  background: transparent;
+    background: transparent;
   }
   .navbar--dark {
     background: transparent;
